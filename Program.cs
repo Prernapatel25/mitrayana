@@ -9,20 +9,30 @@ using Mitrayana.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var port = Environment.GetEnvironmentVariable("PORT");
-var urls = Environment.GetEnvironmentVariable("ASPNETCORE_URLS");
+var portEnv = Environment.GetEnvironmentVariable("PORT");
+var urlsEnv = Environment.GetEnvironmentVariable("ASPNETCORE_URLS");
 
-if (!string.IsNullOrEmpty(port))
+if (!string.IsNullOrEmpty(portEnv) && int.TryParse(portEnv, out var port))
 {
-    urls = $"http://0.0.0.0:{port}";
+    Console.WriteLine($"Binding Kestrel to PORT env: {port}");
+    builder.WebHost.ConfigureKestrel(options =>
+    {
+        options.ListenAnyIP(port);
+    });
 }
-else if (string.IsNullOrEmpty(urls))
+else if (!string.IsNullOrEmpty(urlsEnv))
 {
-    urls = "http://0.0.0.0:8080";
+    Console.WriteLine($"Binding to ASPNETCORE_URLS env: {urlsEnv}");
+    builder.WebHost.UseUrls(urlsEnv);
 }
-
-Console.WriteLine($"Binding URLs: {urls}");
-builder.WebHost.UseUrls(urls);
+else
+{
+    Console.WriteLine("PORT not set; binding to default 8080");
+    builder.WebHost.ConfigureKestrel(options =>
+    {
+        options.ListenAnyIP(8080);
+    });
+}
 
 // Load configuration
 var configuration = builder.Configuration;

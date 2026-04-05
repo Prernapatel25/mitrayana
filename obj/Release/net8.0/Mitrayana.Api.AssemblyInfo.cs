@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mitrayana.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2665f47c0c31c916d434ca2d9a2dbfc9eeabc327")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2bfcc8392db2c0f2b6839d60c68ab0522695c7a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mitrayana.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mitrayana.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

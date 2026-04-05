@@ -39,7 +39,7 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
-})
+});
 
 // SQLite Database (fallback)
 // builder.Services.AddDbContext<ApplicationDbContext>(options =>

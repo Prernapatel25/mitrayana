@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mitrayana | Register</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon_io/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+            background: linear-gradient(135deg, rgba(0, 143, 132, .1), rgba(0, 191, 165, .06));
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 16px;
+        }
+
+        .auth-card {
+            max-width: 980px;
+            width: 100%;
+            background: rgba(255, 255, 255, .85);
+            backdrop-filter: blur(18px);
+            border-radius: 18px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, .08);
+            padding: 40px;
+            position: relative;
+        }
+
+        .auth-header {
+            font-weight: 800;
+            color: #072b28;
+        }
+
+        .role-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .role-btn {
+            border-radius: 14px;
+            border: 2px solid rgba
+            (0, 0, 0, .08);
+            background: #fff;
+            padding: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .25s;
+        }
+
+        .role-btn.active {
+            background: linear-gradient(90deg, #00bfa5, #008080);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 10px 30px rgba(0, 191, 165, .25);
+            transform: scale(1.02);
+        }
+
+        /* Parent grid */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        /* Make role sections merge into parent grid */
+        #seniorFields,
+        #providerFields {
+            display: contents;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .form-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 18px;
+            top: 38px;
+            cursor: pointer;
+            color: #6b6b6b;
+        }
+
+        .btn-teal {
+            background: linear-gradient(90deg, #00bfa5, #008080);
+            border: none;
+            color: #fff;
+            font-weight: 700;
+            padding: 14px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 191, 165, .2);
+        }
+
+        /* Remove ALL :invalid rules */
+
+        /* Show validation only after submit */
+        .was-validated .form-control:invalid,
+        .was-validated .form-select:invalid {
+            border-color: #dc3545;
+        }
+
+        /* Close (X) button */
+        .close-btn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 36px;
+            height: 36px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.06);
+            color: #072b28;
+            text-decoration: none;
+        }
+
+        .required-star {
+            color: #dc3545;
+            margin-left: 4px;
+        }
+
+        /* Modal animations */
+        @keyframes checkmarkBounce {
+            0% {
+                transform: scale(0) rotate(-180deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2) rotate(0deg);
+                opacity: 1;
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            animation: fall 3s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(500px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes modalBounceIn {
+            0% {
+                transform: scale(0.3) translateY(-50px);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.05) translateY(0);
+                opacity: 1;
+            }
+            70% {
+                transform: scale(0.95);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .modal-backdrop-custom {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            animation: backdropFadeIn 0.3s ease-out;
+            z-index: -1;
+        }
+
+        @keyframes backdropFadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="auth-card">
+        <a href="index.html" class="close-btn" title="Back to Home" aria-label="Close">
+            <i class="bi bi-x-lg"></i>
+        </a>
+
+        <h2 class="auth-header mb-2">Create Account</h2>
+        <p class="text-muted mb-4">Select your role and complete the registration</p>
+
+        <!-- Role Selector -->
+        <div class="role-selector">
+            <button type="button" id="seniorBtn" class="role-btn active" data-role="Senior">Senior Citizen</button>
+            <button type="button" id="providerBtn" class="role-btn" data-role="ServiceProvider">Service Provider
+            </button>
+        </div>
+
+        <!-- Success Modal -->
+        <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+            <div class="modal-backdrop-custom"></div>
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content success-modal" style="background: linear-gradient(135deg, #28a745, #20c997); border: none; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); animation: modalBounceIn 0.6s ease-out;">
+                    <div class="modal-body text-center p-5">
+                        <div id="successIcon" style="font-size: 4rem; color: white; margin-bottom: 1rem; animation: checkmarkBounce 0.8s ease-out, pulse 2s ease-in-out infinite 1s;">
+                            <i class="bi bi-check-circle-fill"></i>
+                        </div>
+                        <h3 class="text-white mb-3" style="font-weight: 700; animation: textFadeIn 1s ease-out 0.3s both;">Registration Successful!</h3>
+                        <p class="text-white mb-0" style="font-size: 1.1rem; animation: textFadeIn 1s ease-out 0.5s both;">Thank you! Your account has been created.<br>Redirecting to your dashboard...</p>
+                        <div class="mt-4" style="animation: textFadeIn 1s ease-out 0.7s both;">
+                            <p id="countdown" class="text-white mb-2" style="font-size: 1.2rem;">Redirecting in 3 seconds...</p>
+                            <div class="progress" style="height: 6px; background: rgba(255,255,255,0.2);">
+                                <div id="progressBar" class="progress-bar" style="width: 100%; background: white; transition: width 1s linear;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="confetti" class="confetti"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="serverStatus" class="alert server-alert alert-warning d-none" role="status" aria-live="polite">
+            <i class="bi bi-exclamation-triangle me-2" aria-hidden="true"></i>
+            <span id="statusMessage">Checking server connection…</span>
+            <span id="statusSpinner" class="spinner-border spinner-border-sm ms-2" style="display:none" role="status"
+                aria-hidden="true"></span>
+        </div>
+
+
+        <form id="registerForm" enctype="multipart/form-data" novalidate>
+            <input type="hidden" id="role" name="role" value="Senior">
+
+            <div class="form-grid">
+
+                <!-- Common Fields -->
+                <div>
+                    <label class="form-label">Full Name <span class="required-star">*</span></label>
+                    <input type="text" id="name" class="form-control" required>
+                    <div class="invalid-feedback">Enter your full name (Only Letters).</div>
+                </div>
+
+                <div>
+                    <label class="form-label">Date of Birth <span class="required-star">*</span></label>
+                    <input type="date" id="dob" class="form-control" required>
+                    <div class="invalid-feedback" id="dobError">Enter your DOB</div>
+                </div>
+
+                <div>
+                    <label class="form-label">Email <span class="required-star">*</span></label>
+                    <input type="email" id="email" class="form-control" required>
+                    <div class="invalid-feedback">Please enter a valid email.</div>
+                </div>
+
+                <div>
+                    <label class="form-label">Contact Number <span class="required-star">*</span></label>
+                    <input type="tel" id="contact" class="form-control" pattern="[0-9]{10}" required>
+                    <div class="invalid-feedback">Enter valid contact number.</div>
+                </div>
+
+                <div>
+                    <label class="form-label">Gender <span class="required-star">*</span></label>
+                    <select id="gender" class="form-select" required>
+                        <option value="">Select</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                    <div class="invalid-feedback">Select gender.</div>
+                </div>
+
+                <div>
+                    <label class="form-label">Address <span class="required-star">*</span></label>
+                    <input type="text" id="address" class="form-control" required>
+                    <div class="invalid-feedback">Enter your address.</div>
+                </div>
+
+                <div>
+                    <label class="form-label">Pin Code <span class="required-star">*</span></label>
+                    <input type="text" inputmode="numeric" id="pin" class="form-control" pattern="[0-9]{6}" maxlength="6"
+                        required>
+                    <div class="invalid-feedback" id="pinFeedback">Enter 6 digit pin code from allowed cities (Surat, Gandhinagar, Ahmedabad, Vapi, Vadodara, Rajkot).</div>
+                </div>
+
+                <!-- Senior Fields -->
+                <div id="seniorFields">
+                    <div>
+                        <label class="form-label">Age</label>
+                        <input type="number" id="seniorAge" class="form-control" readonly>
+                    </div>
+
+                    <div>
+                        <label class="form-label">Health Condition <span class="required-star">*</span></label>
+                        <textarea id="health" class="form-control" rows="3"></textarea>
+                        <div class="invalid-feedback">Please enter your health condition.</div>
+                    </div>
+
+                    <div>
+                        <label class="form-label">Emergency Contact <span class="required-star">*</span></label>
+                        <input type="tel" id="emergency" class="form-control" pattern="[0-9]{10}" required>
+                        <div class="invalid-feedback">Enter valid emergency contact number.</div>
+                    </div>
+                </div>
+
+                <!-- Provider Fields -->
+                <div id="providerFields" style="display:none;">
+                    <div>
+                        <label class="form-label">Age</label>
+                        <input type="number" id="providerAge" class="form-control" readonly>
+                    </div>
+
+                    <div>
+                        <label class="form-label">Service Category <span class="required-star">*</span></label>
+                        <select id="skills" class="form-select">
+                            <option value="">Select a service category</option>
+                            <option value="Medical Assistance">Medical Assistance</option>
+                            <option value="Household Help">Household Help</option>
+                            <option value="Wellness">Wellness</option>
+                        </select>
+                        <div class="invalid-feedback">Please select a service category.</div>
+                    </div>
+
+                    <div>
+                        <label class="form-label">Availability <span class="required-star">*</span></label>
+                        <select id="availability" class="form-select">
+                            <option value="">Select</option>
+                            <option>Full-time</option>
+                            <option>Part-time</option>
+                        </select>
+                        <div class="invalid-feedback">Select your availability.</div>
+                    </div>
+
+                    <div>
+                        <label class="form-label">Location <span class="required-star">*</span></label>
+                        <input type="text" id="location" class="form-control">
+                        <div class="invalid-feedback">Enter your location.</div>
+                    </div>
+
+                    <div class="full-width">
+                        <label class="form-label">Upload Identity Proof <span class="required-star">*</span></label>
+                        <input type="file" id="identityProof" class="form-control">
+                        <div class="invalid-feedback">Please upload your identity proof document.</div>
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="password-wrapper">
+                    <label class="form-label">Password <span class="required-star">*</span></label>
+                    <input type="password" id="password" class="form-control" minlength="6" maxlength="10" required>
+                    <span id="passwordToggle" class="toggle-password" onclick="togglePassword('password')">
+                        <i class="bi bi-eye-slash"></i>
+                    </span>
+                    <div class="invalid-feedback">Password must be between 6 and 10 characters.</div>
+                </div>
+
+                <div class="password-wrapper">
+                    <label class="form-label">Confirm Password <span class="required-star">*</span></label>
+                    <input type="password" id="confirmPassword" class="form-control" required>
+                    <span id="confirmPasswordToggle" class="toggle-password" onclick="togglePassword('confirmPassword')">
+                        <i class="bi bi-eye-slash"></i>
+                    </span>
+                    <div class="invalid-feedback">Passwords do not match.</div>
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn btn-teal w-100 mt-4">Register</button>
+        </form>
+
+
+        <!-- Ensure app.js is available to handle submission and API calls -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/app.js"></script>
+
+    </div>
+
+    <!-- single script block for registration page behaviour is below -->
+    <script>
+        const form = document.getElementById('registerForm');
+
+        form.addEventListener('submit', async function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            // Custom validations
+            if (!form.checkValidity()) {
+                form.classList.add('was-validated');
+                return;
+            }
+
+            // Validate pincode
+            const pincode = document.getElementById('pin').value.trim();
+            if (pincode.length !== 6 || !isValidPincode(pincode)) {
+                document.getElementById('pin').classList.add('is-invalid');
+                document.getElementById('pinFeedback').textContent = 'Pincode must be from one of the allowed cities: Surat, Gandhinagar, Ahmedabad, Vapi, Vadodara, or Rajkot.';
+                form.classList.add('was-validated');
+                return;
+            }
+
+            // Hide password eye on submit (hide all toggles)
+            document.querySelectorAll('.toggle-password').forEach(el => el.style.display = 'none');
+
+            const password = document.getElementById('password').value;
+            const confirm = document.getElementById('confirmPassword').value;
+            if (password.length < 6 || password.length > 10) {
+                document.getElementById('password').classList.add('is-invalid');
+                return;
+            }
+
+            if (password !== confirm) {
+                document.getElementById('confirmPassword').classList.add('is-invalid');
+                return;
+            }
+
+            // Validate emergency contact for seniors
+            if (document.getElementById('role').value === 'Senior') {
+                const contact = document.getElementById('contact').value.trim();
+                const emergency = document.getElementById('emergency').value.trim();
+                if (emergency === contact) {
+                    document.getElementById('emergency').classList.add('is-invalid');
+                    document.getElementById('emergency').nextElementSibling.textContent = 'Emergency contact cannot be the same as contact number.';
+                    return;
+                }
+            }
+
+            // Require identity proof for service providers
+            if (document.getElementById('role').value === 'ServiceProvider') {
+                const identityInput = document.getElementById('identityProof');
+                if (!identityInput.files || identityInput.files.length === 0) {
+                    identityInput.classList.add('is-invalid');
+                    form.classList.add('was-validated');
+                    return;
+                }
+            }
+
+            // Build FormData payload
+            const formData = new FormData();
+            formData.append('Name', document.getElementById('name').value.trim());
+            formData.append('Email', document.getElementById('email').value.trim());
+            formData.append('Password', password);
+            formData.append('Role', document.getElementById('role').value);
+            formData.append('DateOfBirth', document.getElementById('dob').value);
+            formData.append('ContactNumber', document.getElementById('contact').value.trim());
+            formData.append('Gender', document.getElementById('gender').value);
+            formData.append('Address', document.getElementById('address').value.trim());
+            formData.append('PinCode', document.getElementById('pin').value.trim());
+            formData.append('Age', parseInt(document.getElementById('seniorAge').value || document.getElementById('providerAge').value || 0));
+            formData.append('HealthCondition', document.getElementById('health').value.trim());
+            formData.append('EmergencyContact', document.getElementById('emergency').value.trim());
+            formData.append('Skills', document.getElementById('skills').value);
+            formData.append('Availability', document.getElementById('availability').value);
+            formData.append('Location', document.getElementById('location').value.trim());
+
+            // Add document if selected
+            const documentInput = document.getElementById('identityProof');
+            if (documentInput.files.length > 0) {
+                formData.append('Document', documentInput.files[0]);
+            }
+
+            try {
+                const BASE_API = (typeof API_URL !== 'undefined') ? API_URL : 'http://localhost:5501';
+                const res = await fetch(BASE_API + '/api/Auth/register', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await res.json().catch(() => null);
+                if (res.ok) {
+                    // Store token and role
+                    localStorage.setItem("token", data.token);
+                    localStorage.setItem("role", data.role);
+
+                    // Show success modal
+                    const modal = new bootstrap.Modal(document.getElementById('successModal'));
+                    modal.show();
+
+                    // Add confetti
+                    const confettiContainer = document.getElementById('confetti');
+                    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#f0932b', '#eb4d4b', '#6c5ce7', '#a29bfe', '#fd79a8', '#00b894', '#e17055', '#81ecec'];
+                    const shapes = ['circle', 'square', 'triangle'];
+                    
+                    for (let i = 0; i < 150; i++) {
+                        const piece = document.createElement('div');
+                        piece.className = 'confetti-piece';
+                        piece.style.left = Math.random() * 100 + '%';
+                        piece.style.animationDelay = Math.random() * 3 + 's';
+                        piece.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+                        
+                        // Random size
+                        const size = Math.random() * 8 + 4;
+                        piece.style.width = size + 'px';
+                        piece.style.height = size + 'px';
+                        
+                        // Add different shapes
+                        const shape = shapes[Math.floor(Math.random() * shapes.length)];
+                        if (shape === 'circle') {
+                            piece.style.borderRadius = '50%';
+                        } else if (shape === 'triangle') {
+                            piece.style.width = '0';
+                            piece.style.height = '0';
+                            piece.style.borderLeft = (size/2) + 'px solid transparent';
+                            piece.style.borderRight = (size/2) + 'px solid transparent';
+                            piece.style.borderBottom = size + 'px solid ' + piece.style.background;
+                            piece.style.background = 'transparent';
+                        }
+                        
+                        confettiContainer.appendChild(piece);
+                    }
+
+                    // Start countdown
+                    let countdown = 3;
+                    const countdownEl = document.getElementById('countdown');
+                    const progressBar = document.getElementById('progressBar');
+                    progressBar.style.width = '100%';
+                    const interval = setInterval(() => {
+                        countdown--;
+                        const progress = (countdown / 3) * 100;
+                        progressBar.style.width = progress + '%';
+                        if (countdown > 0) {
+                            countdownEl.textContent = `Redirecting in ${countdown} second${countdown === 1 ? '' : 's'}...`;
+                        } else {
+                            clearInterval(interval);
+                            modal.hide();
+                            if (data.role === "Senior") {
+                                window.location.href = 'senior-dashboard.html';
+                            } else if (data.role === "ServiceProvider") {
+                                window.location.href = 'serviceprovider-dashboard.html';
+                            } else if (data.role === "Admin") {
+                                window.location.href = 'admin-dashboard.html';
+                            } else {
+                                window.location.href = 'login.html'; // fallback
+                            }
+                        }
+                    }, 1000);
+                } else {
+                    alert(data?.message || 'Registration failed');
+                }
+            } catch (ex) {
+                console.error(ex);
+                alert('Cannot connect to server. Please try again later.');
+            }
+        });
+
+        const nameInput = document.getElementById('name');
+
+        // Real-time validation
+        nameInput.addEventListener('input', function () {
+            const nameRegex = /^[A-Za-z\s.'-]+$/;
+
+            if (!nameRegex.test(this.value.trim())) {
+                this.setCustomValidity('Invalid');
+                this.classList.add('is-invalid');
+                this.classList.remove('is-valid');
+            } else {
+                this.setCustomValidity('');
+                this.classList.remove('is-invalid');
+                this.classList.add('is-valid');
+            }
+        });
+
+        // Restrict contact and emergency to numbers only
+        document.getElementById('contact').addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+        document.getElementById('emergency').addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+        document.getElementById('identityProof').addEventListener('change', function () {
+            if (this.files && this.files.length > 0) {
+                this.classList.remove('is-invalid');
+            }
+        });
+
+        // Server configuration
+        const API_URL = 'http://localhost:5501';
+        const serverStatusDiv = document.getElementById('serverStatus');
+        const statusSpinner = document.getElementById('statusSpinner');
+        const statusMessage = document.getElementById('statusMessage');
+
+        // Check server status
+        async function checkServerStatus() {
+            try {
+                serverStatusDiv.classList.remove('d-none', 'alert-success', 'alert-danger');
+                serverStatusDiv.classList.add('alert-warning');
+                statusSpinner.style.display = 'inline-block';
+
+                const response = await fetch(`${API_URL}/api/Auth/health`);
+
+                if (response.ok) {
+                    serverStatusDiv.classList.replace('alert-warning', 'alert-success');
+                    statusMessage.textContent = 'Server is running';
+                    statusSpinner.style.display = 'none';
+                    setTimeout(() => serverStatusDiv.classList.add('d-none'), 2000);
+                    return true;
+                }
+                throw new Error('Server returned an error');
+            } catch (error) {
+                serverStatusDiv.classList.replace('alert-warning', 'alert-danger');
+                statusSpinner.style.display = 'none';
+                statusMessage.innerHTML = `
+            Cannot connect to server. Please ensure the backend is running on port 5501.
+            <button onclick="checkServerStatus()" class="btn btn-sm btn-outline-danger ms-2">Retry</button>
+          `;
+                return false;
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get role from URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const role = urlParams.get('role');
+
+            // Set the appropriate button and form based on URL parameter
+            const seniorBtn = document.getElementById('seniorBtn');
+            const providerBtn = document.getElementById('providerBtn');
+
+            if (role === 'volunteer') {
+                showForm('provider', providerBtn);
+            } else {
+                showForm('senior', seniorBtn);
+            }
+
+            // Ensure fields are enabled/disabled correctly on initial load
+            toggleRoleFields(role === 'volunteer' ? 'provider' : 'senior');
+
+            // Set initial required states
+            const isProvider = role === 'volunteer';
+            document.getElementById('identityProof').required = isProvider;
+
+            if (isProvider) {
+                document.getElementById('health').required = false;
+                document.getElementById('emergency').required = false;
+                document.getElementById('skills').required = true;
+                document.getElementById('availability').required = true;
+                document.getElementById('location').required = true;
+            } else {
+                document.getElementById('health').required = true;
+                document.getElementById('emergency').required = true;
+                document.getElementById('skills').required = false;
+                document.getElementById('availability').required = false;
+                document.getElementById('location').required = false;
+            }
+
+            checkServerStatus(); // Check server when page loads
+        });
+
+        function showForm(role, clickedButton) {
+            document.getElementById('seniorFields').style.display = role === 'senior' ? 'contents' : 'none';
+            document.getElementById('providerFields').style.display = role === 'provider' ? 'contents' : 'none';
+
+            document.getElementById('registerForm').dataset.role = role;
+            document.querySelectorAll('.role-btn').forEach(btn => btn.classList.remove('active'));
+            clickedButton.classList.add('active');
+            toggleRoleFields(role);
+        }
+
+        // Disable inputs in the hidden section to avoid HTML5 constraint validation blocking submissions
+        function toggleRoleFields(role) {
+            const seniorFields = document.querySelectorAll('#seniorFields input, #seniorFields select, #seniorFields textarea');
+            const providerFields = document.querySelectorAll('#providerFields input, #providerFields select, #providerFields textarea');
+
+            seniorFields.forEach(el => {
+                el.disabled = role !== 'senior';
+            });
+            providerFields.forEach(el => {
+                el.disabled = role !== 'provider';
+            });
+
+            // update hidden role input
+            document.getElementById('role').value = (role === 'senior') ? 'Senior' : 'ServiceProvider';
+
+            // update required attributes
+            if (role === 'senior') {
+                document.getElementById('health').required = true;
+                document.getElementById('emergency').required = true;
+                document.getElementById('skills').required = false;
+                document.getElementById('availability').required = false;
+                document.getElementById('location').required = false;
+                document.getElementById('identityProof').required = false;
+            } else {
+                document.getElementById('health').required = false;
+                document.getElementById('emergency').required = false;
+                document.getElementById('skills').required = true;
+                document.getElementById('availability').required = true;
+                document.getElementById('location').required = true;
+                document.getElementById('identityProof').required = true;
+            }
+        }
+
+        // Password toggle (single definition)
+        function togglePassword(id) {
+            const input = document.getElementById(id);
+            const icon = input.nextElementSibling.querySelector('i');
+            input.type = input.type === 'password' ? 'text' : 'password';
+            icon.classList.toggle('bi-eye-slash');
+            icon.classList.toggle('bi-eye');
+        }
+
+        const dob = document.getElementById('dob');
+        const seniorAge = document.getElementById('seniorAge');
+        const providerAge = document.getElementById('providerAge');
+        const roleInput = document.getElementById('role');
+        const dobError = document.getElementById('dobError');
+
+        function calculateAge(date) {
+            const today = new Date();
+            const birthDate = new Date(date);
+
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const m = today.getMonth() - birthDate.getMonth();
+
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return age;
+        }
+
+        dob.addEventListener('change', () => {
+            if (!dob.value) return;
+
+            const age = calculateAge(dob.value);
+            const role = roleInput.value;
+
+            seniorAge.value = age;
+            providerAge.value = age;
+
+            // Dynamic age validation
+            if (role === 'Senior' && age < 60) {
+                dob.classList.add('is-invalid');
+                dobError.textContent = 'Senior citizen must be at least 60 years old.';
+                return;
+            }
+
+            if (role === 'ServiceProvider' && age < 18) {
+                dob.classList.add('is-invalid');
+                dobError.textContent = 'Service provider must be at least 18 years old.';
+                return;
+            }
+
+            dob.classList.remove('is-invalid');
+            dobError.textContent = '';
+        });
+
+        // Role switch logic
+        document.querySelectorAll('.role-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Reuse showForm to ensure fields visibility and disabled states are correctly toggled
+                const roleKey = btn.dataset.role === 'Senior' ? 'senior' : 'provider';
+                showForm(roleKey, btn);
+
+                roleInput.value = btn.dataset.role;
+
+                // Clear all fields when switching roles to prevent browser autofill conflicts
+                const idsToClear = ['name','dob','email','contact','gender','address','pin','password','confirmPassword','seniorAge','providerAge','health','emergency','skills','availability','location'];
+                idsToClear.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (!el) return;
+                    if (el.tagName === 'SELECT') el.selectedIndex = 0;
+                    else el.value = '';
+                    el.classList.remove('is-valid','is-invalid');
+                });
+
+                // Clear file input explicitly
+                const fileInput = document.getElementById('identityProof');
+                if (fileInput) fileInput.value = '';
+
+                // Reset form validation state
+                form.classList.remove('was-validated');
+
+                // Ensure required attributes are set appropriately
+                if (btn.dataset.role === 'Senior') {
+                    document.getElementById('health').required = true;
+                    document.getElementById('emergency').required = true;
+                    document.getElementById('skills').required = false;
+                    document.getElementById('availability').required = false;
+                    document.getElementById('location').required = false;
+                } else {
+                    document.getElementById('health').required = false;
+                    document.getElementById('emergency').required = false;
+                    document.getElementById('skills').required = true;
+                    document.getElementById('availability').required = true;
+                    document.getElementById('location').required = true;
+                }
+
+                // Update age display based on cleared DOB
+                dob.dispatchEvent(new Event('change'));
+
+                // Re-show password toggles in case they were hidden previously
+                document.querySelectorAll('.toggle-password').forEach(el => el.style.display = 'inline-block');
+            });
+        });
+
+        // Pin input: allow only digits and limit to 6
+        const pinInput = document.getElementById('pin');
+        
+        // Valid pincode ranges for allowed cities
+        const validPincodeRanges = {
+            'Ahmedabad': [[380000, 382999], [384000, 384999]],
+            'Gandhinagar': [[382000, 382999]],
+            'Surat': [[395000, 396999]],
+            'Vapi': [[396100, 396999]],
+            'Vadodara': [[390000, 391999]],
+            'Rajkot': [[360000, 360999]]
+        };
+
+        function isValidPincode(pincode) {
+            const pin = parseInt(pincode);
+            for (const [city, ranges] of Object.entries(validPincodeRanges)) {
+                for (const [min, max] of ranges) {
+                    if (pin >= min && pin <= max) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        pinInput.addEventListener('input', (e) => {
+            const cleaned = e.target.value.replace(/\D+/g, '').slice(0, 6);
+            if (cleaned !== e.target.value) e.target.value = cleaned;
+            
+            // Validate pincode if 6 digits
+            if (cleaned.length === 6) {
+                if (!isValidPincode(cleaned)) {
+                    pinInput.classList.add('is-invalid');
+                    document.getElementById('pinFeedback').textContent = 'Pincode must be from one of the allowed cities: Surat, Gandhinagar, Ahmedabad, Vapi, Vadodara, or Rajkot.';
+                } else {
+                    pinInput.classList.remove('is-invalid');
+                    pinInput.classList.add('is-valid');
+                }
+            } else {
+                pinInput.classList.remove('is-invalid', 'is-valid');
+            }
+        });
+
+        // Password toggle function
+        function togglePassword(id) {
+            const input = document.getElementById(id);
+            const toggle = document.getElementById(id + 'Toggle');
+            if (input.type === 'password') {
+                input.type = 'text';
+                toggle.innerHTML = '<i class="bi bi-eye"></i>';
+            } else {
+                input.type = 'password';
+                toggle.innerHTML = '<i class="bi bi-eye-slash"></i>';
+            }
+        }
+
+    </script>
+
+
+
+</html>
+

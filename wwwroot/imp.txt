@@ -1,0 +1,4 @@
+admin@mitrayana.local
+Admin@123
+dotnet run --project "C:\Users\Hp\OneDrive\Desktop\Mitrayna.Api.csproj"
+Stop-Process -Name 'dotnet' -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 1; dotnet build "C:\Users\Hp\OneDrive\Desktop\Mitrayna.Api.csproj" -v minimal

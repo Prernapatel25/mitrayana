@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description"
+    content="Mitrayana — Senior care portal providing compassionate services and trusted providers.">
+  <title>Mitrayana — Senior Care Portal</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon_io/favicon.ico">
+
+  <!-- Fonts & Icons -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Favicons -->
+  <link rel="icon" href="images/favicon_io/favicon.ico" type="image/x-icon">
+
+  <!-- Project styles -->
+  <link rel="stylesheet" href="css/site.css">
+
+  <meta name="theme-color" content="#00695c">
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader" aria-hidden="false">
+    <div class="loader-container">
+      <div class="spinner" role="status" aria-label="Loading"></div>
+      <img src="images/logo.png" alt="Mitrayana Logo" class="loader-logo">
+    </div>
+  </div>
+
+  <!-- SITE HEADER / NAV -->
+  <header role="banner">
+    <!-- ------------------- NAVBAR ------------------- -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="images/whitelogo.png" width="55" height="55" alt="" id="siteLogo">
+          Mitrayana
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+          <span class="navbar-toggler-icon"><span></span></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-center" id="navMenu">
+          <ul class="navbar-nav ms-auto gap-lg-3">
+            <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="testimonial.html">Testimonials</a></li>
+            <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+          <a href="login.html" class="btn btn-nav ms-lg-3">Login</a>
+          <a href="register.html" class="btn btn-nav ms-lg-3">Join Us</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>
+        Welcome to <br>
+        <span class="brand-name">Mitrayana</span>
+      </h1>
+
+      <p class="hero-tagline">
+        A helping hand, a listening ear, and trusted support for senior citizens,
+        right when it matters.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="register.html" class="btn-primary">Get Started</a>
+        <a href="register.html?role=volunteer" class="btn-outline">
+          Join as Service Provider
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- About content -->
+  <section class="about-section">
+    <div class="about-container">
+
+      <!-- LEFT CONTENT -->
+      <div class="about-content">
+        <span class="section-tag">
+          <i class="fa-solid fa-leaf"></i> ABOUT US
+        </span>
+
+        <h2>Care You Can Trust,<br>Support You Can Feel</h2>
+
+        <div class="about-item ">
+          <div class="icon">
+            <i class="fa-solid fa-user-nurse"></i>
+          </div>
+          <div class="text">
+            <h4>Verified Care Providers</h4>
+            <p>
+              Our service providers and volunteers are carefully verified to
+              ensure safe, reliable, and compassionate care for seniors.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-item ">
+          <div class="icon">
+            <i class="fa-solid fa-hand-holding-heart"></i>
+          </div>
+          <div class="text">
+            <h4>Emotional & Social Support</h4>
+            <p>
+              We focus on connection as much as care, helping seniors feel heard,
+              valued, and never alone.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-item">
+          <div class="icon">
+            <i class="fa-solid fa-notes-medical"></i>
+          </div>
+          <div class="text">
+            <h4>Health & Daily Assistance</h4>
+            <p>
+              From medication reminders to daily errands, Mitrayana supports
+              independent and dignified living.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT IMAGES -->
+      <div class="about-images">
+        <div class="image-block large">
+          <img src="https://i.ibb.co/bgCrvV9m/1.jpg" alt="Senior receiving care">
+          <div class="badge left-badge">
+            <i class="fa-solid fa-users"></i>
+            <strong>1K+</strong>
+            <span>Support Requests</span>
+          </div>
+        </div>
+
+        <div class="image-block small">
+          <img src="https://i.ibb.co/kVJqncq9/2.jpg" alt="Care and companionship">
+          <div class="badge right-badge">
+            <i class="fa-solid fa-heart"></i>
+            <strong>2K+</strong>
+            <span>Lives Touched</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="hiw-section">
+    <div class="hiw-container">
+      <div class="hiw-header">
+        <span class="hiw-subtitle"><i class="fa-solid fa-sparkles"></i> HOW WE WORK</span>
+        <h2 class="hiw-title">Because every senior deserves care and companionship.</h2>
+      </div>
+
+      <div class="hiw-flex-container">
+        <div class="hiw-image-column">
+          <img src="images\caregiver.png" alt="Caregiver with Senior" class="hiw-side-img">
+        </div>
+
+        <div class="hiw-features-column">
+          <div class="hiw-feature-row">
+            <div class="hiw-icon-container">
+              <div class="hiw-icon-circle"><i class="fa-solid fa-heart-pulse"></i></div>
+              <span class="hiw-number">01</span>
+            </div>
+            <div class="hiw-text">
+              <h3>Personalized Care Services</h3>
+              <p>From assistance with daily activities to care support, our care plans are designed.</p>
+            </div>
+          </div>
+
+          <div class="hiw-feature-row">
+            <div class="hiw-icon-container">
+              <div class="hiw-icon-circle"><i class="fa-solid fa-house-chimney-medical"></i></div>
+              <span class="hiw-number">02</span>
+            </div>
+            <div class="hiw-text">
+              <h3>In-Home Health Care</h3>
+              <p>With flexible care plans, families can rest assured their loved ones receive daily assistance.</p>
+            </div>
+          </div>
+
+          <div class="hiw-feature-row">
+            <div class="hiw-icon-container">
+              <div class="hiw-icon-circle"><i class="fa-solid fa-pills"></i></div>
+              <span class="hiw-number">03</span>
+            </div>
+            <div class="hiw-text">
+              <h3>Timely and prompt services</h3>
+              <p>Whether managing health conditions or supporting daily wellness, we deliver reliable care right at
+                home.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-5" data-aos="fade-up">
+    <div class="container">
+      <h2 class="section-title">Our Services</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="service-box">
+            <i class="bi bi-heart-pulse fs-1 mb-3"></i>
+            <h5>Health Assistance</h5>
+            <p><B>Reliable and compassionate support for daily medical needs.</B></p>
+            <p>We help seniors manage daily health needs through medication reminders, appointment assistance, and basic
+              health monitoring. Our focus is to make healthcare simple, timely, and stress-free for seniors and their
+              families.</p>
+            <button class="servicebtn" onclick="applyForService('health_assistance')">Apply Now</button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-box">
+            <i class="bi bi-people fs-1 mb-3"></i>
+            <h5>Wellness</h5>
+            <p><b>Fostering mental and social well-being through companionship.</b></p>
+            <p>Our wellness support focuses on companionship, meaningful conversations, and gentle activities like
+              reading, hobbies, light exercise, and social outings. We help seniors stay connected, active, and
+              emotionally uplifted.</p>
+            <button class="servicebtn" onclick="applyForService('wellness')">Apply Now</button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-box">
+            <i class="bi bi-chat-heart fs-1 mb-3"></i>
+            <h5>Household Support</h5>
+            <p><B>A helping hand with routine domestic tasks for a safe, comfortable home.</B></p>
+            <p>Our support includes light housekeeping, laundry help, and assistance with everyday errands like grocery
+              shopping. We help seniors enjoy a clean, safe, and well-managed living space without unnecessary strain.
+            </p>
+            <button class="servicebtn" onclick="applyForService('household_support')">Apply Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARE FOR EVERY SITUATION Section -->
+  <section class="mit-mission-teal">
+    <div class="mission-container">
+
+      <div class="mission-header">
+        <span class="mission-tagline">
+          <i class="fa-solid fa-sparkles"></i> CARE FOR EVERY SITUATION
+        </span>
+        <h2 class="mission-main-text">
+          Our mission is to ensure senior citizens are never alone—by connecting them with timely, reliable help and
+          compassionate human support in their everyday lives.
+        </h2>
+      </div>
+
+      <div class="mission-stack">
+
+        <div class="mission-card">
+          <div class="mission-text">
+            <h3>Human-Centered Support</h3>
+            <p>Mitrayana connects seniors with nearby volunteers for everyday needs, creating care rooted in presence,
+              trust, and respect.</p>
+          </div>
+          <div class="mission-icon-box">
+            <i class="fa-solid fa-hand-holding-heart"></i>
+          </div>
+        </div>
+
+        <div class="mission-card">
+          <div class="mission-text">
+            <h3>Support That Grows With Needs</h3>
+            <p>Mitrayana grows with real needs—starting from daily assistance and expanding to support that helps
+              seniors live with comfort, dignity, and independence.</p>
+          </div>
+          <div class="mission-icon-box">
+            <i class="fa-solid fa-kit-medical"></i>
+          </div>
+        </div>
+
+        <div class="mission-card">
+          <div class="mission-text">
+            <h3>Built on Trust & Reliability</h3>
+            <p>Our community is built on a foundation of safety and reliability, ensuring every senior feels secure in
+              the care they receive.</p>
+          </div>
+          <div class="mission-icon-box">
+            <i class="fa-solid fa-shield-heart"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Service Providers Section -->
+  <section id="team" class="py-5" data-aos="fade-up">
+    <div class="container text-center">
+      <h2 class="section-title">Meet the People Who Care</h2>
+      <div class="row g-4 justify-content-center">
+        <!-- Volunteer 1 -->
+        <div class="col-md-4">
+          <div class="card shadow-sm border-0">
+            <img src="images/team(girl).png" class="card-img-top" alt="Service provider 1">
+            <div class="card-body">
+              <h5 class="fw-semibold">Dr. Adya Roy</h5>
+              <p class="text-teal fw-bold">Physiotherapist</p>
+              <p class="text-muted">Dr. Roy is a well-known resident who serves elders with utmost care and love.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Volunteer 2 -->
+        <div class="col-md-4">
+          <div class="card shadow-sm border-0">
+            <img src="images/team(boy).png" class="card-img-top" alt="Service provider 2">
+            <div class="card-body">
+              <h5 class="fw-semibold">Mr. Roshan Kumar</h5>
+              <p class="text-teal fw-bold">Delivery Associate</p>
+              <p class="text-muted">He provides timely help and support to seniors with dedication and a smile.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Volunteer 3 -->
+        <div class="col-md-4">
+          <div class="card shadow-sm border-0">
+            <img src="images/team(girl2).png" class="card-img-top" alt="Service provider 3">
+            <div class="card-body">
+              <h5 class="fw-semibold">Miss Aliya Patel</h5>
+              <p class="text-teal fw-bold">Care Friend</p>
+              <p class="text-muted">A loving care friend and companion who brightens senior's days.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="mitrayana-premium-testi">
+    <div class="testi-container">
+      <div class="testi-header">
+        <span class="testi-tagline">TESTIMONIALS</span>
+        <h2 class="testi-main-title">What Our Happy Families Say</h2>
+      </div>
+
+      <div class="testi-grid-wrapper">
+
+        <div class="testi-card-box">
+          <div class="testi-stars-gold">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+              class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testi-card-quote">
+            "The people from Mitrayana treat my mother with genuine care and respect. Knowing someone is there for her
+            gives our family real peace of mind."
+          </p>
+          <div class="testi-user-footer">
+            <div class="testi-avatar-small"><img src="https://i.pravatar.cc/150?u=Arjun" alt="Arjun Sharma"></div>
+            <div class="testi-user-meta">
+              <h4>ARJUN SHARMA</h4>
+              <span>Caregiver & Son</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card-box">
+          <div class="testi-stars-gold">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+              class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testi-card-quote">
+            "Mitrayana keeps us informed at every step. The updates and communication make it easy to trust that my
+            father is being looked after properly."
+          </p>
+          <div class="testi-user-footer">
+            <div class="testi-avatar-small"><img src="https://i.pravatar.cc/150?u=Priya" alt="Priya Patel"></div>
+            <div class="testi-user-meta">
+              <h4>PRIYA PATEL</h4>
+              <span>Daughter of Resident</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card-box">
+          <div class="testi-stars-gold">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+              class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testi-card-quote">
+            "Help arrives when it’s needed. Whether it’s medicines or daily assistance, Mitrayana has made managing my
+            grandfather’s needs much easier."
+          </p>
+          <div class="testi-user-footer">
+            <div class="testi-avatar-small"><img src="https://i.pravatar.cc/150?u=Vikram" alt="Vikram Singh"></div>
+            <div class="testi-user-meta">
+              <h4>ADYA SINGH</h4>
+              <span>Guardian</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Contact Section -->
+  <section class="mit-contact-section">
+    <div class="mit-contact-container">
+
+      <div class="mit-contact-info">
+        <h2 class="mit-contact-title">Get in Touch</h2>
+        <p class="mit-contact-subtitle">We'd love to hear from you!</p>
+        <p class="mit-contact-text">
+          If you have any inquiries or just want to say hi, please use the contact form!
+        </p>
+
+        <div class="mit-contact-details">
+          <div class="mit-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:miitrayana@gmail.com">miitrayana@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="mit-social-links">
+          <a href="#" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+
+          <a href="#" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <a href="#" aria-label="Twitter">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+
+          <a href="#" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="mit-contact-form" id="form-wrapper">
+        <div class="mit-form-header">
+          <div class="mit-menu-line"></div>
+          <div class="mit-menu-line"></div>
+          <div class="mit-menu-line"></div>
+        </div>
+
+        <form id="contact-form">
+          <div class="mit-form-row">
+            <div class="mit-form-group">
+              <label>First Name *</label>
+              <input type="text" id="fname" required>
+            </div>
+            <div class="mit-form-group">
+              <label>Last Name *</label>
+              <input type="text" id="lname" required>
+            </div>
+          </div>
+
+          <div class="mit-form-group">
+            <label>Email *</label>
+            <input type="email" id="email" required>
+          </div>
+
+          <div class="mit-form-group">
+            <label>Message *</label>
+            <textarea id="message" rows="4" required></textarea>
+          </div>
+
+          <div class="mit-form-footer">
+            <button type="submit" class="mit-send-btn">Send</button>
+          </div>
+        </form>
+
+        <div id="success-message" class="hidden-message">
+          <i class="fa-solid fa-circle-check"></i>
+          <h3>Thank You!</h3>
+          <p>Your message has been sent successfully. We will get back to you shortly.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevents the page from refreshing
+
+      // Hide the form elements
+      document.querySelector('#contact-form').style.display = 'none';
+      document.querySelector('.mit-form-header').style.display = 'none';
+
+      // Show the success message
+      const successMsg = document.getElementById('success-message');
+      successMsg.style.display = 'block';
+      successMsg.classList.add('fade-in');
+    });
+  </script>
+
+
+  <!-- Footer -->
+  <footer class="mitrayana-footer-dark-soft">
+    <div class="footer-container">
+
+      <div class="footer-col brand-links">
+        <div class="footer-logo">
+          <img src="images/logo.png" alt="Mitrayana Logo">
+        </div>
+        <ul class="footer-nav-list">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col contact-info">
+        <h3 class="f-title">Get In Touch</h3>
+        <div class="f-title-underline"></div>
+
+        <div class="f-contact-item">
+          <div class="f-icon-circle"><i class="fa-solid fa-location-dot"></i></div>
+          <div class="f-text-box">
+            <strong>Our Address</strong>
+            <p>Mitrayana, Block No: 156 Ch Type, Sector - 17, Gandhinagar, Gujarat</p>
+          </div>
+        </div>
+
+        <div class="f-contact-item">
+          <div class="f-icon-circle"><i class="fa-solid fa-phone"></i></div>
+          <div class="f-text-box">
+            <strong>Call Us</strong>
+            <p>(079) 29641845<br>09228118221, 09726155123</p>
+          </div>
+        </div>
+
+        <div class="f-contact-item">
+          <div class="f-icon-circle"><i class="fa-solid fa-envelope"></i></div>
+          <div class="f-text-box">
+            <strong>Mail Us</strong>
+            <p>miitrayana@gmail.com</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-col location-map">
+        <h3 class="f-title">Location Map</h3>
+        <div class="f-title-underline"></div>
+        <div class="f-map-card">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3667.283157144983!2d72.63914831500!3d23.22416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2b93f0b2f156%3A0x0!2zMjPCsDEzJzI3LjAiTiA3MsKwMzgnMjguOSJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+            width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <footer>
+    <p class="text-center">© 2025 Mitrayana | Senior Citizen Help Portal</p>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTopBtn" class="scroll-to-top" onclick="topFunction()">↑</button>
+
+  <script src="js/app.js"></script>
+</body>
+
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  // Preloader hide and AOS init
+  window.addEventListener('load', function () {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+      preloader.classList.add('hide');
+      preloader.setAttribute('aria-hidden', 'true');
+    }
+    AOS.init({
+      duration: 700,
+      once: true,
+      offset: 80
+    });
+  });
+
+  // Small helper for service buttons
+  function applyForService(service) {
+    // If user is not logged in, ask them to login first
+    const token = localStorage.getItem('token');
+    if (!token) {
+      if (confirm('Please login to apply for services. Would you like to go to the login page now?')) {
+        window.location.href = 'login.html';
+      }
+      return;
+    }
+
+    // If logged in, proceed (in demo this opens the register/request flow)
+    alert('Apply for: ' + service);
+  }
+</script>
+<script>
+  window.addEventListener("scroll", function () {
+    const logo = document.getElementById("siteLogo");
+
+    if (window.scrollY > 50) {
+      logo.classList.add("logo-teal");
+    } else {
+      logo.classList.remove("logo-teal");
+    }
+  });
+</script>
+<style>
+  /* ---------- THEME COLORS ---------- */
+  :root {
+    --teal: #008080;
+    --teal-dark: #006F6F;
+    --gold: #FFC107;
+    --gold-soft: #FFF9EC;
+    --navy: #0A1A2F;
+  }
+
+  /* ---------- BASE STAT CARD STYLE ---------- */
+  .stat-box {
+    min-height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: all 0.2s ease;
+  }
+
+  /* Hover effect */
+  .stat-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+  }
+
+  /* ---------- TEAL STAT CARD (left card) ---------- */
+  .stat-dark {
+    background-color: var(--teal);
+    color: #fff;
+    border-color: rgba(0, 128, 128, 0.25);
+  }
+
+  .stat-dark i {
+    color: #fff;
+  }
+
+  /* ---------- GOLD ACCENT STAT CARD (right card) ---------- */
+  .stat-accent {
+    background-color: var(--gold-soft);
+    /* soft gold background */
+    color: var(--navy);
+    border: 1px solid rgba(255, 193, 7, 0.28);
+    /* gold border */
+  }
+
+  .stat-accent i {
+    color: var(--gold);
+    /* gold icon */
+  }
+
+  /* Optional typography adjustments */
+  .stat-box h3 {
+    margin: 0;
+    line-height: 1;
+  }
+
+  .stat-box p {
+    margin: 0;
+    font-size: 1rem;
+    opacity: 0.95;
+  }
+</style>

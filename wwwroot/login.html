@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mitrayana | Login</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon_io/favicon.ico">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    /* ROOT + BASE*/
+    :root {
+      --brand-1: #00bfa5;
+      --brand-2: #008080;
+      --muted: #6b6b6b;
+      --surface: #ffffff;
+      --glass: rgba(255, 255, 255, 0.85);
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin-top: 30px;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+      color: #1f2d2b;
+      background: linear-gradient(135deg,
+          rgba(0, 143, 132, 0.10),
+          rgba(0, 191, 165, 0.06));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 18px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    /* Soft background glow */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(0, 191, 165, 0.12), transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 143, 132, 0.12), transparent 40%);
+      z-index: -1;
+    }
+
+    /* ===============================
+   AUTH CARD
+================================ */
+    .auth-card {
+      width: 100%;
+      max-width: 920px;
+      display: grid;
+      grid-template-columns: 1fr 460px;
+      background: var(--glass);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .auth-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.12);
+    }
+
+    /* ===============================
+   HERO (LEFT)
+================================ */
+    .auth-hero {
+      padding: 48px 40px;
+      background: linear-gradient(180deg,
+          rgba(0, 191, 165, 0.08),
+          rgba(0, 143, 132, 0.04));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      text-align: center;
+      animation: fadeSlide .7s ease both;
+    }
+
+    .auth-hero .badge {
+      background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-weight: 800;
+      letter-spacing: .6px;
+      box-shadow: 0 6px 18px rgba(0, 143, 132, 0.18);
+    }
+
+    /*.hero-illustration {
+      width: 240px;
+      height: 240px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #e6fffb, #ffffff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 40px rgba(0, 143, 132, 0.15);
+      overflow: hidden;
+      
+    }*/
+   .hero-illustration {
+  width: 240px;
+  height: 240px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #e6fffb, #ffffff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-illustration img {
+  max-width: 75%;
+  max-height: 75%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+
+    @keyframes fadeSlide {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===============================
+   FORM (RIGHT)
+================================ */
+    .auth-form {
+      padding: 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .auth-top {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .auth-brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .auth-brand .badge.small {
+      padding: 6px 12px;
+      font-size: .9rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+      color: #fff;
+      border-radius: 999px;
+    }
+
+    .badge-link {
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .badge-link:hover {
+      transform: translateY(-2px);
+    }
+
+    .badge-link:hover .badge {
+      box-shadow: 0 8px 20px rgba(0, 143, 132, 0.25);
+    }
+
+    .auth-header {
+      font-size: 1.65rem;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      margin: 0;
+      color: #072b28;
+    }
+
+    .auth-sub {
+      font-size: .95rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ===============================
+   INPUTS
+================================ */
+    .input-icon {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 6px 12px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      transition: all .25s ease;
+    }
+
+    .input-icon .icon {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .input-icon input.form-control {
+      border: none;
+      box-shadow: none;
+      height: 44px;
+      padding: 0 6px;
+      font-size: .95rem;
+    }
+
+    .input-icon:focus-within {
+      border-color: transparent;
+      box-shadow:
+        0 0 0 3px rgba(0, 191, 165, 0.18),
+        0 12px 30px rgba(0, 143, 132, 0.10);
+    }
+
+    .form-control:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    /* Password toggle */
+    .toggle-password {
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .toggle-password:hover i {
+      color: var(--brand-2);
+    }
+
+    /* ===============================
+   BUTTON
+================================ */
+    .btn-teal {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+      color: #fff;
+      border: none;
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: 0 10px 30px rgba(0, 191, 165, 0.18);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .btn-teal::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg,
+          transparent,
+          rgba(255, 255, 255, 0.35),
+          transparent);
+      transform: translateX(-100%);
+      transition: transform .5s ease;
+    }
+
+    .btn-teal:hover::after {
+      transform: translateX(100%);
+    }
+
+    .btn-teal:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 44px rgba(0, 191, 165, 0.25);
+    }
+
+    /* ===============================
+   MISC
+================================ */
+    .meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .forgot-link {
+      color: var(--brand-2);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .server-alert {
+      transition: all .25s ease;
+    }
+
+    /* ===============================
+   RESPONSIVE
+================================ */
+    @media (max-width: 900px) {
+      .auth-card {
+        grid-template-columns: 1fr;
+        max-width: 560px;
+      }
+
+      .auth-hero {
+        display: none;
+      }
+
+      .auth-form {
+        padding: 28px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .auth-header {
+        font-size: 1.35rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="auth-card" role="main" aria-labelledby="loginHeading">
+    <aside class="auth-hero" aria-hidden="false">
+      <a href="index.html" class="badge-link">
+        <div class="badge">Mitrayana</div>
+      </a>
+      <div class="hero-illustration" aria-hidden="true">
+        <!-- Real illustration image (decorative) -->
+        <img src="images/logo.png" alt="" aria-hidden="true" class="hero-illustration-img">
+      </div>
+      <h2>Care. Connect. Community.</h2>
+      <p>Personalized support and compassionate services for seniors — trusted volunteers & professionals.</p>
+    </aside>
+
+    <section class="auth-form">
+      <div class="auth-top">
+        <div class="auth-brand">
+          <a href="index.html" class="badge-link">
+            <div class="badge small">Mitrayana</div>
+          </a>
+        </div>
+        <h1 id="loginHeading" class="auth-header">Welcome back</h1>
+        <div class="auth-sub">Log in to access your dashboard and manage requests</div>
+      </div>
+
+      <div id="serverStatus" class="alert server-alert alert-warning d-none" role="status" aria-live="polite">
+        <i class="bi bi-exclamation-triangle me-2"></i>
+        Checking server connection...
+      </div>
+
+      <form id="loginForm" novalidate>
+        <div class="mb-3">
+          <label for="email" class="form-label fw-semibold">Email Address</label>
+          <div class="input-icon">
+            <i class="bi bi-envelope icon" aria-hidden="true"></i>
+            <input type="email" id="email" name="email" autocomplete="email" class="form-control"
+              placeholder="you@domain.com" required>
+          </div>
+          <div class="invalid-feedback">Please enter a valid email address.</div>
+        </div>
+
+        <div class="mb-3 password-wrapper">
+          <label for="password" class="form-label fw-semibold">Password</label>
+          <div class="input-icon">
+            <i class="bi bi-lock icon" aria-hidden="true"></i>
+            <input type="password" id="password" name="password" autocomplete="current-password" class="form-control"
+              placeholder="Enter your password" minlength="6" required>
+            <span class="toggle-password" onclick="togglePassword()" aria-hidden="true"><i class="bi bi-eye-slash"></i></span>
+          </div>
+          <div class="invalid-feedback">Password must be at least 6 characters long.</div>
+        </div>
+
+        <div class="meta-row mb-3">
+          
+
+          <a href="forgot-password.html" class="small text-decoration-none">Forgot Password?</a>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-teal" id="loginButton">
+            <span id="buttonText">Login</span>
+            <span id="loadingSpinner" class="spinner-border spinner-border-sm ms-2 d-none" role="status"
+              aria-hidden="true"></span>
+          </button>
+        </div>
+
+
+
+        <div class="text-center mt-4 small">New here? <a href="register.html" class="fw-semibold text-decoration-none">Create an account</a></div>
+      </form>
+    </section>
+  </div>
+
+  <script>
+    // Server configuration
+    const API_URL = "http://localhost:5501";
+    const serverStatusDiv = document.getElementById("serverStatus");
+    const loginButton = document.getElementById("loginButton");
+    const buttonText = document.getElementById("buttonText");
+    const loadingSpinner = document.getElementById("loadingSpinner");
+
+    // Check server status on page load
+    async function checkServerStatus() {
+      try {
+        serverStatusDiv.classList.remove("d-none", "alert-success", "alert-danger");
+        serverStatusDiv.classList.add("alert-warning");
+        serverStatusDiv.innerHTML = '<i class="bi bi-exclamation-triangle me-2"></i>Checking server connection...';
+
+        const response = await fetch(API_URL + "/api/Auth/health", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" }
+        });
+
+        if (response.ok) {
+          serverStatusDiv.classList.replace("alert-warning", "alert-success");
+          serverStatusDiv.innerHTML = '<i class="bi bi-check-circle me-2"></i>Server is running';
+          setTimeout(() => serverStatusDiv.classList.add("d-none"), 2000);
+          return true;
+        } else {
+          throw new Error("Server returned an error");
+        }
+      } catch (error) {
+        serverStatusDiv.classList.replace("alert-warning", "alert-danger");
+        serverStatusDiv.innerHTML = `
+          <i class="bi bi-exclamation-circle me-2"></i>
+          Cannot connect to server. Please ensure the backend is running on port 5501.
+          <button onclick="checkServerStatus()" class="btn btn-sm btn-outline-danger ms-2">Retry</button>
+        `;
+        return false;
+      }
+    }
+
+    // Check server status on page load
+    document.addEventListener("DOMContentLoaded", checkServerStatus);
+
+    // Toggle password visibility
+    function togglePassword() {
+      const passwordInput = document.getElementById("password");
+      const icon = document.querySelector(".toggle-password i");
+
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        icon.classList.remove("bi-eye-slash");
+        icon.classList.add("bi-eye");
+      } else {
+        passwordInput.type = "password";
+        icon.classList.remove("bi-eye");
+        icon.classList.add("bi-eye-slash");
+      }
+    }
+
+    // Set loading state
+    function setLoading(isLoading) {
+      loginButton.disabled = isLoading;
+      buttonText.textContent = isLoading ? "Logging in..." : "Login";
+      loadingSpinner.classList.toggle("d-none", !isLoading);
+    }
+
+    // Login form handler
+    document.getElementById("loginForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const form = this;
+      if (!form.checkValidity()) {
+        form.classList.add("was-validated");
+        return;
+      }
+
+      // Check server status before attempting login
+      const isServerRunning = await checkServerStatus();
+      if (!isServerRunning) {
+        return;
+      }
+
+      setLoading(true);
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const loginData = { email, password };
+
+      try {
+        const response = await fetch(API_URL + "/api/Auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(loginData)
+        });
+
+        // Safely handle both JSON and plain text responses
+        const text = await response.text();
+        let data;
+        try {
+          data = JSON.parse(text);
+        } catch {
+          data = { message: text };
+        }
+
+        if (response.ok) {
+          // Store user data and token
+          localStorage.setItem("user", JSON.stringify(data));
+          if (data.token) {
+            localStorage.setItem("token", data.token);
+          }
+
+          // Redirect based on role
+          const redirectUrl = data.role ?
+            `${data.role.toLowerCase()}-dashboard.html` :
+            "dashboard.html";
+
+          serverStatusDiv.classList.remove("d-none", "alert-danger");
+          serverStatusDiv.classList.add("alert-success");
+          serverStatusDiv.innerHTML = '<i class="bi bi-check-circle me-2"></i>Login successful! Redirecting...';
+
+          setTimeout(() => {
+            window.location.href = redirectUrl;
+          }, 1500);
+        } else {
+          serverStatusDiv.classList.remove("d-none");
+          serverStatusDiv.classList.add("alert-danger");
+          serverStatusDiv.innerHTML = `
+            <i class="bi bi-exclamation-circle me-2"></i>
+            ${data.message || "Invalid email or password"}
+          `;
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        serverStatusDiv.classList.remove("d-none");
+        serverStatusDiv.classList.add("alert-danger");
+        serverStatusDiv.innerHTML = `
+          <i class="bi bi-exclamation-circle me-2"></i>
+          Cannot connect to server. Please try again later.
+        `;
+      } finally {
+        setLoading(false);
+      }
+    });
+
+    /* ---------------- UI enhancements ---------------- */
+    document.addEventListener('DOMContentLoaded', function () {
+      const card = document.querySelector('.auth-card');
+      if (card) setTimeout(() => card.classList.add('loaded'), 60);
+
+      const email = document.getElementById('email');
+      if (email) email.focus();
+
+      const remember = document.getElementById('rememberMe');
+      if (remember && localStorage.getItem('remember_email')) {
+        email.value = localStorage.getItem('remember_email');
+        remember.checked = true;
+      }
+
+      // Persist remember email on successful submit
+      const fform = document.getElementById('loginForm');
+      if (fform) {
+        fform.addEventListener('submit', function () {
+          if (remember && remember.checked) localStorage.setItem('remember_email', document.getElementById('email').value.trim());
+          else localStorage.removeItem('remember_email');
+        });
+      }
+
+      // If redirected after successful registration, prefill email and show message
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('registered')) {
+        const registeredEmail = params.get('email');
+        if (registeredEmail) document.getElementById('email').value = decodeURIComponent(registeredEmail);
+        serverStatusDiv.classList.remove('d-none');
+        serverStatusDiv.classList.remove('alert-warning', 'alert-danger');
+        serverStatusDiv.classList.add('alert-success');
+        serverStatusDiv.innerHTML = '<i class="bi bi-check-circle me-2"></i>Registered successfully — please log in.';
+        // Focus password field for quick login
+        document.getElementById('password').focus();
+        setTimeout(() => serverStatusDiv.classList.add('d-none'), 4000);
+        // Remove query params from the URL to avoid repeated message on reload
+        if (window.history && window.history.replaceState) {
+          const cleanUrl = window.location.pathname;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+      }
+
+    });
+
+  </script>
+
+
+</html>
+

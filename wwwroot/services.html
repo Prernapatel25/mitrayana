@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Services | Mitrayana</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <!-- Font Awesome (ONLY icon library) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+    <!-- Favicons -->
+    <link rel="icon" href="images/favicon_io/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/site.css">
+    <meta name="theme-color" content="#00695c">
+    <style>
+        .hero-title {
+            font-size: 55px;
+            margin-top: 15px;
+        }
+        .category-list {
+            margin-top: 50px;
+        }
+        /* ===============================
+   SERVICE GRID
+================================ */
+        .subcategory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 32px;
+            width: 100%;
+        }
+
+        /* ===============================
+   PREMIUM SERVICE CARD
+================================ */
+        .premium-card {
+            position: relative;
+            background: #ffffff;
+            border-radius: 24px;
+            overflow: hidden;
+            isolation: isolate;
+            box-shadow: 0 18px 40px rgba(0, 105, 92, 0.15);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .premium-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 105, 92, 0.25);
+        }
+
+        /* ===============================
+   DECORATIVE SHAPE
+================================ */
+        .card-shape {
+            position: absolute;
+            top: -70px;
+            right: -70px;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #009688, #00695c);
+            border-radius: 50%;
+            opacity: 0.14;
+        }
+
+        /* ===============================
+   ICON BADGE (FIXED)
+================================ */
+        .icon-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, #009688, #00695c);
+            color: #ffffff;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+            z-index: 10;
+        }
+
+        .icon-badge span,
+        .icon-badge i {
+            line-height: 1;
+            color: #ffffff;
+            font-size: 44px;
+        }
+
+        /* ===============================
+            CARD BODY
+        ================================ */
+        .premium-card .card-body {
+            padding: 24px;
+            text-align: left;
+        }
+
+        .premium-card h5 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #004d40;
+            margin-bottom: 10px;
+        }
+
+        .premium-card p {
+            font-size: 1rem;
+            color: #5f6f73;
+            line-height: 1.6;
+            margin-bottom: 22px;
+        }
+
+        /* ===============================
+             BUTTON
+        ================================ */
+        .premium-card .servicebtn {
+            width: 100%;
+            border: none;
+            padding: 14px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #009688, #00695c);
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .premium-card .servicebtn:hover {
+            background: linear-gradient(135deg, #00695c, #004d40);
+            transform: scale(1.03);
+        }
+
+        .login-notice {
+            position: fixed;
+            top: 90px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            color: #004d40;
+            padding: 22px 26px;
+            border-radius: 18px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 9999;
+            text-align: center;
+            max-width: 90%;
+            border: 2px solid #009688;
+        }
+
+        .login-notice p {
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .notice-btn {
+            background: linear-gradient(135deg, #009688, #00695c);
+            color: #ffffff;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 14px;
+            cursor: pointer;
+        }
+
+        .notice-btn:hover {
+            background: linear-gradient(135deg, #00695c, #004d40);
+        }
+
+
+        /* ===============================
+          CATEGORY BUTTONS (MOBILE)
+        ================================ */
+        @media (max-width: 768px) {
+
+            .category-list {
+                display: block;
+                overflow: hidden;
+            }
+
+            .category-btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 12px;
+                padding: 14px;
+                font-size: 1rem;
+                border-radius: 14px;
+                text-align: center;
+            }
+        }
+
+        /* ===============================
+           MOBILE CARD LAYOUT (FINAL FIX)
+        ================================ */
+        @media (max-width: 768px) {
+
+            .subcategory-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 16px;
+            }
+
+            .subcategory-card,
+            .premium-card {
+                width: 100%;
+                max-width: 100%;
+                margin: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .subcategory-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 20px;
+                width: 100%;
+                padding: 0;
+            }
+
+            .premium-card {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            #services-list.p-5 {
+                padding: 1rem !important;
+            }
+
+            .icon-badge {
+                top: 16px;
+                right: 8px;
+                border-radius: 50%;
+                width: 52px;
+                height: 52px;
+            }
+
+            .icon-badge span {
+                font-size: 28px;
+            }
+
+            .navbar-toggler-icon {
+                filter: invert(30%) sepia(80%) saturate(400%) hue-rotate(140deg);
+            }
+
+            .hero-banner.services-hero a {
+                margin-bottom: 10px;
+            }
+
+            .hero-banner.services-hero h1 {
+                font-size: 2rem;
+                margin-top: 30px;
+            }
+
+            .hero-banner.services-hero p {
+                font-size: 1rem;
+                margin-top: 10px;
+            }
+
+            .hero-banner.services-hero {
+                height: auto;
+                padding: 60px 20px 40px 20px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader" aria-hidden="false">
+        <div class="loader-container">
+            <div class="spinner" role="status" aria-label="Loading"></div>
+            <img src="images/logo.png" alt="Mitrayana Logo" class="loader-logo">
+        </div>
+    </div>
+    <!-- Header / NAV (consistent with other pages) -->
+    <header role="banner">
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="home.html">
+                    <img src="images/whitelogo.png" width="55" height="55" alt="" id="siteLogo">
+                    Mitrayana
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                    <span class="navbar-toggler-icon"><span></span></span>
+                </button>
+
+                <div class="collapse navbar-collapse text-center" id="navMenu">
+                    <ul class="navbar-nav ms-auto gap-lg-3">
+                        <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="testimonial.html">Testimonial</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                    <a href="login.html" class="btn btn-nav ms-lg-3">Login</a>
+                    <a href="register.html" class="btn btn-nav ms-lg-3">Join Us</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero-banner services-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <h1 class="hero-title text-white">Our Services</h1>
+                    <p class="lead text-white">Compassionate, trusted support — tailored services to help seniors live
+                        independently and with dignity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES CATEGORIES + SUBCATEGORIES -->
+    <section id="services-list" class="p-5">
+        <div class="container">
+            <div class="section-title">What We Offer</div>
+
+            <div class="services-categories mt-4">
+                <div class="row">
+                    <!-- CATEGORY LIST -->
+                    <div class="col-lg-3">
+                        <div class="category-list" role="tablist" id="categoryList">
+                            <!-- injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- SUB SERVICES -->
+                    <div class="col-lg-9">
+                        <div id="subcategory-grid" class="subcategory-grid">
+                            <!-- injected by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (reused from existing) -->
+    <footer class="mitrayana-footer-dark-soft">
+        <div class="footer-container">
+
+            <div class="footer-col brand-links">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="Mitrayana Logo">
+                </div>
+                <ul class="footer-nav-list">
+                    <li><a href="about">About Us</a></li>
+                    <li><a href="services">Services</a></li>
+                    <li><a href="testimonial">Testimonials</a></li>
+                    <li><a href="gallery">Gallery</a></li>
+                    <li><a href="contact">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact-info">
+                <h3 class="f-title">Get In Touch</h3>
+                <div class="f-title-underline"></div>
+
+                <div class="f-contact-item">
+                    <div class="f-icon-circle"><i class="fa-solid fa-location-dot"></i></div>
+                    <div class="f-text-box">
+                        <strong>Our Address</strong>
+                        <p>Mitrayana, Block No: 156 Ch Type, Sector - 17, Gandhinagar, Gujarat</p>
+                    </div>
+                </div>
+
+                <div class="f-contact-item">
+                    <div class="f-icon-circle"><i class="fa-solid fa-phone"></i></div>
+                    <div class="f-text-box">
+                        <strong>Call Us</strong>
+                        <p>(079) 29641845<br>09228118221, 09726155123</p>
+                    </div>
+                </div>
+
+                <div class="f-contact-item">
+                    <div class="f-icon-circle"><i class="fa-solid fa-envelope"></i></div>
+                    <div class="f-text-box">
+                        <strong>Mail Us</strong>
+            <p></p>
+                        <p>miitrayana@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-col location-map">
+                <h3 class="f-title">Location Map</h3>
+                <div class="f-title-underline"></div>
+                <div class="f-map-card">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3667.283157144983!2d72.63914831500!3d23.22416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2b93f0b2f156%3A0x0!2zMjPCsDEzJzI3LjAiTiA3MsKwMzgnMjguOSJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+                        width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+    <footer>
+        <p class="text-center">© 2025 Mitrayana | Senior Citizen Help Portal</p>
+    </footer>
+    <div id="loginNotice" class="login-notice">
+        <p id="loginMessage">
+            Please login to continue with your service request.
+        </p>
+        <button onclick="redirectToLogin()" class="notice-btn">
+            OK
+        </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Preloader hide and AOS init
+        window.addEventListener('load', function () {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.classList.add('hide');
+                preloader.setAttribute('aria-hidden', 'true');
+            }
+            AOS.init({
+                duration: 700,
+                once: true,
+                offset: 80
+            });
+        });
+        // Logo color change on scroll
+        window.addEventListener("scroll", function () {
+            const logo = document.getElementById("siteLogo");
+
+            if (window.scrollY > 50) {
+                logo.classList.add("logo-teal");
+            } else {
+                logo.classList.remove("logo-teal");
+            }
+        });
+        // Services Data
+        const SERVICES = [
+            {
+                id: 'health',
+                title: 'Health Assistance',
+                description: 'Doctor visits, medicine delivery, vitals check and medicine reminders timely.',
+                price: '₹500 - ₹1200',
+                duration: '1-3 hours',
+                subs: [
+                    { id: 'doc_visit', title: 'Doctor Visit', price: '₹700', duration: '1 hour', desc: 'Doctor home visit and basic checkup.' },
+                    { id: 'medicine_delivery', title: 'Medicine Delivery', price: '₹150', duration: 'Same day', desc: 'We pick & deliver medicines timely.' },
+                    { id: 'vitals_check', title: 'Vitals Check', price: '₹300', duration: '30 mins', desc: 'BP, sugar, temperature monitoring.' }
+                ]
+            },
+            {
+                id: 'wellness',
+                title: 'Wellness',
+                description: 'Counseling, yoga, social companionship and gentle exercises.',
+                price: '₹300 - ₹900',
+                duration: '1 hour/session',
+                subs: [
+                    { id: 'counseling', title: 'Counseling', price: '₹600', duration: '45 mins', desc: 'Emotional support & counseling.' },
+                    { id: 'yoga', title: 'Home Yoga', price: '₹350', duration: '45 mins', desc: 'Gentle seniors-friendly yoga session.' },
+                    { id: 'companionship', title: 'Companionship', price: '₹300', duration: '2 hours', desc: 'Friendly visits & conversation.' }
+                ]
+            },
+            {
+                id: 'household',
+                title: 'Household Support',
+                description: 'Cleaning, grocery, laundry and small home repairs.',
+                price: '₹200 - ₹700',
+                duration: '1-3 hours',
+                subs: [
+                    { id: 'grocery', title: 'Grocery Shopping', price: '₹250', duration: '2-3 hours', desc: 'Grocery purchase & drop-off.' },
+                    { id: 'cleaning', title: 'Home Cleaning', price: '₹400', duration: '2 hours', desc: 'Light housekeeping & cleaning.' },
+                    { id: 'laundry', title: 'Laundry Help', price: '₹300', duration: '2 hours', desc: 'Laundry and folding support.' }
+                ]
+            }
+        ];
+        // Icon Mapping
+
+        const ICON_MAP = {
+            doc_visit: 'medical_services',
+            medicine_delivery: 'pill',
+            vitals_check: 'respiratory_rate',
+
+            counseling: 'psychology',
+            yoga: 'self_improvement',
+            companionship: 'group',
+
+            grocery: 'shopping_cart',
+            cleaning: 'cleaning_services',
+            laundry: 'laundry'
+        };
+        // Render serivces
+        const categoryList = document.getElementById('categoryList');
+        const grid = document.getElementById('subcategory-grid');
+
+        /* Render Category Buttons */
+        SERVICES.forEach((service, index) => {
+            const btn = document.createElement('button');
+            btn.className = `category-btn ${index === 0 ? 'active' : ''}`;
+            btn.textContent = service.title;
+            btn.dataset.target = service.id;
+            btn.setAttribute('aria-pressed', index === 0);
+
+            btn.onclick = () => switchCategory(service.id, btn);
+            categoryList.appendChild(btn);
+        });
+
+        /* Render Sub Services */
+        function renderSubServices(categoryId) {
+            grid.innerHTML = '';
+            const category = SERVICES.find(s => s.id === categoryId);
+            if (!category) return;
+
+            category.subs.forEach(sub => {
+                grid.innerHTML += `
+            <div class="subcategory-card premium-card">
+                <div class="card-shape"></div>
+
+                <div class="icon-badge">
+                    <span class="material-symbols-rounded">
+                        ${ICON_MAP[sub.id] || 'info'}
+                     </span>
+                </div>
+
+                <div class="card-body">
+                    <h5>${sub.title}</h5>
+                    <p>${sub.desc}</p>
+
+                    <p class="small text-muted">
+                        ⏱ ${sub.duration} &nbsp; | &nbsp;  ${sub.price}
+                    </p>
+
+                    <button class="servicebtn"
+                        onclick="applyForService('${sub.title}')">
+                        Apply
+                    </button>
+                </div>
+            </div>
+        `;
+            });
+        }
+
+        /* Switch Category */
+        function switchCategory(id, btn) {
+            document.querySelectorAll('.category-btn').forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-pressed', 'false');
+            });
+
+            btn.classList.add('active');
+            btn.setAttribute('aria-pressed', 'true');
+
+            renderSubServices(id);
+        }
+
+        /* Default Load */
+        renderSubServices(SERVICES[0].id);
+
+        // Apply for Service
+
+        function applyForService(serviceName) {
+            localStorage.setItem('selectedService', serviceName);
+
+            const notice = document.getElementById('loginNotice');
+            const msg = document.getElementById('loginMessage');
+
+            msg.innerText = `Please login to apply for ${serviceName}.`;
+            notice.style.display = 'block';
+        }
+
+        function redirectToLogin() {
+            window.location.href = 'login.html';
+        }
+
+
+
+    </script>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="scroll-to-top" onclick="topFunction()">↑</button>
+
+</body>
+
+</html>

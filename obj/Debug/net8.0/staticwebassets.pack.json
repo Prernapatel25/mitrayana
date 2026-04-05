@@ -1,0 +1,289 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\about.html",
+      "PackagePath": "staticwebassets\\about.html"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\admin-dashboard.html",
+      "PackagePath": "staticwebassets\\admin-dashboard.html"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\contact.html",
+      "PackagePath": "staticwebassets\\contact.html"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\email-previews\\reset_fallback_20251229144303202.html",
+      "PackagePath": "staticwebassets\\email-previews\\reset_fallback_20251229144303202.html"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\email-previews\\reset_fallback_20251229144327322.html",
+      "PackagePath": "staticwebassets\\email-previews\\reset_fallback_20251229144327322.html"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\feedback.html",
+      "PackagePath": "staticwebassets\\feedback.html"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\forgot-password.html",
+      "PackagePath": "staticwebassets\\forgot-password.html"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\gallery.html",
+      "PackagePath": "staticwebassets\\gallery.html"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\home.html",
+      "PackagePath": "staticwebassets\\home.html"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\AMIN1.png",
+      "PackagePath": "staticwebassets\\images\\AMIN1.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\AMIN2.png",
+      "PackagePath": "staticwebassets\\images\\AMIN2.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\AMIN3.png",
+      "PackagePath": "staticwebassets\\images\\AMIN3.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\Services-Hero.png",
+      "PackagePath": "staticwebassets\\images\\Services-Hero.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\about-hero.png",
+      "PackagePath": "staticwebassets\\images\\about-hero.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\about-img.png",
+      "PackagePath": "staticwebassets\\images\\about-img.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\care&comfort.png",
+      "PackagePath": "staticwebassets\\images\\care&comfort.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\caregiver.png",
+      "PackagePath": "staticwebassets\\images\\caregiver.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\community-bounds.png",
+      "PackagePath": "staticwebassets\\images\\community-bounds.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\contact-hero.png",
+      "PackagePath": "staticwebassets\\images\\contact-hero.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\favicon_io.zip",
+      "PackagePath": "staticwebassets\\images\\favicon_io.zip"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\favicon_io\\android-chrome-192x192.png",
+      "PackagePath": "staticwebassets\\images\\favicon_io\\android-chrome-192x192.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\favicon_io\\apple-touch-icon.png",
+      "PackagePath": "staticwebassets\\images\\favicon_io\\apple-touch-icon.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\favicon_io\\favicon-16x16.png",
+      "PackagePath": "staticwebassets\\images\\favicon_io\\favicon-16x16.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\favicon_io\\favicon-32x32.png",
+      "PackagePath": "staticwebassets\\images\\favicon_io\\favicon-32x32.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\favicon_io\\favicon.ico",
+      "PackagePath": "staticwebassets\\images\\favicon_io\\favicon.ico"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\favicon_io\\site.webmanifest",
+      "PackagePath": "staticwebassets\\images\\favicon_io\\site.webmanifest"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\gallery-hero.png",
+      "PackagePath": "staticwebassets\\images\\gallery-hero.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\hero-png.png",
+      "PackagePath": "staticwebassets\\images\\hero-png.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\hero.png",
+      "PackagePath": "staticwebassets\\images\\hero.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\hero2.png",
+      "PackagePath": "staticwebassets\\images\\hero2.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\home-delivery.png",
+      "PackagePath": "staticwebassets\\images\\home-delivery.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\home-yoga.png",
+      "PackagePath": "staticwebassets\\images\\home-yoga.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\images.zip",
+      "PackagePath": "staticwebassets\\images\\images.zip"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\kindness.png",
+      "PackagePath": "staticwebassets\\images\\kindness.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\laughter&stories.png",
+      "PackagePath": "staticwebassets\\images\\laughter&stories.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\logo.png",
+      "PackagePath": "staticwebassets\\images\\logo.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\meal.png",
+      "PackagePath": "staticwebassets\\images\\meal.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\services.png",
+      "PackagePath": "staticwebassets\\images\\services.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\team(boy).png",
+      "PackagePath": "staticwebassets\\images\\team(boy).png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\team(boy2).png",
+      "PackagePath": "staticwebassets\\images\\team(boy2).png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\team(girl).png",
+      "PackagePath": "staticwebassets\\images\\team(girl).png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\team(girl2).png",
+      "PackagePath": "staticwebassets\\images\\team(girl2).png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\testinomial-hero.png",
+      "PackagePath": "staticwebassets\\images\\testinomial-hero.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\welness.png",
+      "PackagePath": "staticwebassets\\images\\welness.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\images\\whitelogo.png",
+      "PackagePath": "staticwebassets\\images\\whitelogo.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\imp.txt",
+      "PackagePath": "staticwebassets\\imp.txt"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\js\\app.js",
+      "PackagePath": "staticwebassets\\js\\app.js"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\login.html",
+      "PackagePath": "staticwebassets\\login.html"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\register.html",
+      "PackagePath": "staticwebassets\\register.html"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\reset.html",
+      "PackagePath": "staticwebassets\\reset.html"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\senior-dashboard.html",
+      "PackagePath": "staticwebassets\\senior-dashboard.html"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\serviceprovider-dashboard.html",
+      "PackagePath": "staticwebassets\\serviceprovider-dashboard.html"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\services.html",
+      "PackagePath": "staticwebassets\\services.html"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\testimonial.html",
+      "PackagePath": "staticwebassets\\testimonial.html"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\testing.html",
+      "PackagePath": "staticwebassets\\testing.html"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\uploads\\documents\\15_Screenshot 2026-03-09 082400.png",
+      "PackagePath": "staticwebassets\\uploads\\documents\\15_Screenshot 2026-03-09 082400.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\uploads\\documents\\16_Screenshot 2026-03-09 083404.png",
+      "PackagePath": "staticwebassets\\uploads\\documents\\16_Screenshot 2026-03-09 083404.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\uploads\\documents\\17_Screenshot 2026-03-09 083840.png",
+      "PackagePath": "staticwebassets\\uploads\\documents\\17_Screenshot 2026-03-09 083840.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\uploads\\documents\\19_Prerna_id.png",
+      "PackagePath": "staticwebassets\\uploads\\documents\\19_Prerna_id.png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\uploads\\documents\\20_CLOUD COMPUTING.docx",
+      "PackagePath": "staticwebassets\\uploads\\documents\\20_CLOUD COMPUTING.docx"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\uploads\\documents\\40_Screenshot (321).png",
+      "PackagePath": "staticwebassets\\uploads\\documents\\40_Screenshot (321).png"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\uploads\\documents\\85_Documentation(updated).pdf",
+      "PackagePath": "staticwebassets\\uploads\\documents\\85_Documentation(updated).pdf"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\uploads\\documents\\87_Certificate_2025_Final.pdf",
+      "PackagePath": "staticwebassets\\uploads\\documents\\87_Certificate_2025_Final.pdf"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\uploads\\documents\\88_Documentation(updated).pdf",
+      "PackagePath": "staticwebassets\\uploads\\documents\\88_Documentation(updated).pdf"
+    },
+    {
+      "Id": "D:\\Mitrayna - Copy (2)\\wwwroot\\uploads\\documents\\89_Documentation(updated).pdf",
+      "PackagePath": "staticwebassets\\uploads\\documents\\89_Documentation(updated).pdf"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Mitrayana.Api.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Mitrayana.Api.props",
+      "PackagePath": "build\\Mitrayana.Api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Mitrayana.Api.props",
+      "PackagePath": "buildMultiTargeting\\Mitrayana.Api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Mitrayana.Api.props",
+      "PackagePath": "buildTransitive\\Mitrayana.Api.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

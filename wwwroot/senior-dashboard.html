@@ -1,0 +1,2489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Senior Dashboard | Mitrayana</title>
+
+  <!-- Bootstrap icons + CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Favicons -->
+  <link rel="icon" href="images/favicon_io/favicon.ico" type="image/x-icon">
+
+  <style>
+    :root {
+      --teal: #008080;
+      --teal-dark: #006d6d;
+      --bg: #f6fbfb;
+      --card: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial;
+      background: var(--bg);
+      margin: 0;
+      color: #123;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, var(--teal), #00b3a3);
+      color: white;
+      padding: 22px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow: auto;
+
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .brand img {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      object-fit: cover
+    }
+
+    .brand .title {
+      font-weight: 700;
+      font-size: 1.15rem
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.92);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.08)
+    }
+
+    .nav-link.active {
+      background: rgba(255, 255, 255, 0.14);
+      box-shadow: inset 3px 0 0 rgba(255, 255, 255, 0.18)
+    }
+
+    .sidebar .sp {
+      flex: 1
+    }
+
+    /* Main content */
+    .main {
+      margin-left: 250px;
+      padding: 18px 28px;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      background: white;
+      border-radius: 10px;
+      padding: 10px 16px;
+      box-shadow: 0 6px 20px rgba(10, 10, 10, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .user-chip {
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .user-chip img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover
+    }
+
+    .profile-menu {
+      position: relative
+    }
+
+    /* pages */
+    .page {
+      display: none
+    }
+
+    .page.active {
+      display: block
+    }
+
+    /* cards */
+    .service-card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 6px 20px rgba(15, 15, 15, 0.05);
+      transition: transform .15s ease, box-shadow .15s ease;
+      height: 100%;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 28px rgba(10, 10, 10, 0.08)
+    }
+
+    .service-card h5 {
+      color: var(--teal);
+      font-weight: 700
+    }
+
+    .sub-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px
+    }
+
+    .sub-btn {
+      border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      padding: 6px 10px;
+      background: #f9fffe;
+      cursor: pointer
+    }
+
+    .sub-btn.active {
+      background: var(--teal);
+      color: white;
+      border-color: var(--teal-dark)
+    }
+
+    .service-card {
+      border-radius: 12px;
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .service-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .bg-soft-teal {
+      background: #e0f4f4;
+      color: #008080;
+    }
+
+    .bg-soft-green {
+      background: #e6f5ea;
+      color: #2e7d32;
+    }
+
+    .bg-soft-orange {
+      background: #fff1e6;
+      color: #e65100;
+    }
+
+    .service-text {
+      font-size: 0.9rem;
+      color: #5f6f6f;
+    }
+
+    /* services header banner */
+
+    .services-header-banner {
+      border-radius: 2px;
+      padding: 18px 20px;
+      border-bottom: 6px solid #008080;
+    }
+
+    .services-banner-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: #008080;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+
+    .services-title {
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      color: #064c4c;
+    }
+
+    .services-subtitle {
+      margin-top: 4px;
+      font-size: 0.95rem;
+      color: #566;
+    }
+
+    .services-banner-icon i {
+      animation: softPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes softPulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.08);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+
+    /* request form */
+    .request-panel {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 6px 20px rgba(10, 10, 10, 0.04);
+      margin-top: 14px;
+    }
+
+    /* requests table */
+    .requests-table td,
+    .requests-table th {
+      vertical-align: middle;
+      padding: 10px 12px;
+      border: none;
+    }
+
+    .requests-table th {
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .table-responsive {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .table {
+      margin-bottom: 0;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+
+    .table thead th {
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      color: white;
+      border: none;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .table tbody tr {
+      transition: all 0.2s ease;
+    }
+
+    .table tbody tr:hover {
+      background-color: rgba(0, 128, 128, 0.05);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+      background-color: rgba(0, 128, 128, 0.02);
+    }
+
+    .table-striped tbody tr:nth-of-type(even) {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .table td {
+      border-top: 1px solid rgba(0, 128, 128, 0.1);
+      font-size: 0.85rem;
+    }
+
+    .table .btn {
+      border-radius: 16px;
+      padding: 4px 12px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      min-width: auto;
+      white-space: nowrap;
+    }
+
+    .table .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    }
+
+    .table .btn.btn-sm {
+      padding: 3px 10px;
+      font-size: 0.75rem;
+      border-radius: 14px;
+    }
+
+    /* Status badges */
+    .badge {
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+
+    .badge-success {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .badge-warning {
+      background-color: #ffc107;
+      color: #212529;
+    }
+
+    .badge-danger {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .badge-info {
+      background-color: #17a2b8;
+      color: white;
+    }
+
+    /* small responsive */
+    @media (max-width:900px) {
+      .sidebar {
+        width: 80px;
+        padding: 12px
+      }
+
+      .main {
+        margin-left: 80px;
+        padding: 12px
+      }
+
+      .topbar .user-chip span {
+        display: none
+      }
+
+      .sub-list {
+        gap: 6px
+      }
+    }
+
+    .btn-teal {
+      background-color: #008080;
+      /* teal */
+      color: #fff;
+      border: none;
+    }
+
+    .btn-teal:hover {
+      background-color: #006666;
+      /* darker teal on hover */
+      color: #fff;
+    }
+
+    /* Mobile toggle button */
+    .mobile-toggle {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      font-size: 28px;
+      background: #3a7bd5;
+      color: white;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 6px;
+      z-index: 2000;
+      cursor: pointer;
+    }
+
+    /* Sidebar hidden on mobile */
+    @media (max-width: 992px) {
+      .sidebar {
+        transform: translateX(-250px);
+        transition: 0.3s ease-in-out;
+        position: fixed;
+        z-index: 1500;
+      }
+
+      /* When sidebar is open */
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      /* Main content shifts when menu opens */
+      .content-area {
+        margin-left: 0 !important;
+      }
+    }
+
+    /* ===== Sub-Service Premium Cards ===== */
+
+    .sub-service-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 18px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+      transition: all .25s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sub-service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.10);
+    }
+
+    .sub-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .sub-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      background: #e0f4f4;
+      color: #008080;
+    }
+
+    .sub-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .sub-desc {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 12px;
+    }
+
+    .sub-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .sub-tag {
+      background: #f1f9f9;
+      color: #006d6d;
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .sub-apply {
+      margin-top: auto;
+    }
+
+    .sub-apply .btn {
+      width: 100%;
+      border-radius: 14px;
+      font-weight: 600;
+    }
+
+    /* ===== Animated Service Icons ===== */
+
+    .sub-icon {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Gentle idle pulse */
+    .sub-icon i {
+      animation: iconPulse 2.8s ease-in-out infinite;
+    }
+
+    /* Lift + glow on hover */
+    .sub-service-card:hover .sub-icon {
+      box-shadow: 0 0 0 8px rgba(0, 128, 128, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .sub-service-card:hover .sub-icon i {
+      animation: iconFloat 1.2s ease-in-out infinite;
+    }
+
+    /* Pulse animation */
+    @keyframes iconPulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.08);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Floating animation */
+    @keyframes iconFloat {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-4px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    /* Health */
+    .sub-icon.health {
+      background: #ffecec;
+      color: #c62828;
+    }
+
+    /* Wellness */
+    .sub-icon.wellness {
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    /* Household */
+    .sub-icon.household {
+      background: #e3f2fd;
+      color: #1565c0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sub-icon i {
+        animation: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sub-tag i {
+        animation: none;
+      }
+    }
+
+    /* ===== Neutral Functional Tag Colors ===== */
+
+    /* Base tag (keep this if already present) */
+    .sub-tag {
+      font-size: 0.8rem;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Price – Amber / Sand */
+    .price-tag {
+      background: #fff4e0;
+      /* soft amber */
+      color: #8d5a00;
+      /* deep amber text */
+      border: 1px solid #ffe0b2;
+    }
+
+    /* Duration – Slate / Neutral Blue-Gray */
+    .time-tag {
+      background: #f1f5f9;
+      /* slate 50 */
+      color: #334155;
+      /* slate 700 */
+      border: 1px solid #e2e8f0;
+    }
+
+    /* Subtle hover (optional) */
+    .sub-tag:hover {
+      filter: brightness(0.97);
+    }
+
+    .service-section {
+      margin-bottom: 36px;
+    }
+
+    /* Header container */
+    .service-section-header {
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e6eeee;
+    }
+
+    /* Title row */
+    .service-title {
+      margin: 0;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #064c4c;
+      text-align: center;
+    }
+
+    /* Left accent bar */
+    .service-accent {
+      width: 6px;
+      height: 22px;
+      background: #008080;
+      border-radius: 4px;
+    }
+
+    /* Description */
+    .service-desc {
+      margin: 6px 0 0 14px;
+      font-size: 0.95rem;
+      color: #667;
+      max-width: 720px;
+    }
+
+    .service-section {
+      animation: fadeUp 0.4s ease;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .requests-header,
+    .support-header,
+    .service-header,
+    .requests-header {
+      padding: 16px 18px;
+      border-bottom: 6px solid #008080;
+      border-radius: 2px;
+    }
+
+    .requests-icon,
+    .support-icon,
+    .service-icon,
+    .requests-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      background: #008080;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .requests-title,
+    .support-title,
+    .service-title,
+    .requests-title {
+      font-weight: 700;
+      color: #064c4c;
+    }
+
+    .requests-subtitle,
+    .support-subtitle,
+    .requests-subtitle,
+    .service-subtitle {
+      margin-top: 4px;
+      font-size: 0.95rem;
+      color: #566;
+    }
+
+    .requests-icon i,
+    .support-icon i,
+    .requests-icon i,
+    .service-icon i {
+      animation: iconPulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes iconPulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.08);
+        opacity: 0.95;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Header */
+    .feedback-header {
+      padding: 16px 18px;
+      border-bottom: 6px solid #008080;
+      border-radius: 2px;
+    }
+
+    .feedback-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      background: #008080;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .feedback-icon i {
+      animation: iconPulse 2.4s ease-in-out infinite;
+    }
+
+    .feedback-title {
+      font-weight: 700;
+      color: #064c4c;
+    }
+
+    .feedback-subtitle {
+      margin-top: 4px;
+      font-size: 0.95rem;
+      color: #566;
+    }
+
+    /* Panel */
+    .feedback-panel {
+      border: 1px solid #e6eeee;
+      border-radius: 18px;
+      padding: 22px;
+      background: #fff;
+    }
+
+    .rating-stars {
+      display: flex;
+      gap: 6px;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    .rating-stars i {
+      color: #c7c7c7;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .rating-stars i.active {
+      color: #f4b400;
+      /* golden yellow */
+    }
+
+    .rating-stars i:hover {
+      transform: scale(1.15);
+    }
+
+    .toast.text-bg-success {
+      background-color: #008080 !important;
+    }
+
+    /* Sidebar mobile behavior */
+    /* ======================================
+   MOBILE VIEW (≤ 768px)
+====================================== */
+    @media (max-width: 768px) {
+
+      /* Hide desktop sidebar */
+      .sidebar {
+        display: none;
+      }
+
+      /* Main content full width */
+      .main {
+        margin-left: 0 !important;
+      }
+
+      /* ===============================
+     MOBILE TOP BAR
+  =============================== */
+      .mobile-topbar {
+        position: sticky;
+        top: 0;
+        z-index: 1050;
+
+        height: 56px;
+        padding: 0 12px;
+
+        background: #ffffff;
+        border-bottom: 1px solid #e5e5e5;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      /* Brand (logo + text) */
+      .mobile-topbar .brand {
+        display: flex;
+        gap: 8px;
+        min-width: 0;
+        /* 🔥 prevents text hiding */
+      }
+
+      .mobile-topbar img {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+
+      .mobile-topbar .title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #008080;
+      }
+
+      /* Menu toggle button */
+      .mobile-topbar button {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 8px;
+      }
+
+      .mobile-topbar button i {
+        font-size: 1.5rem;
+      }
+
+      /* ===============================
+     OFFCANVAS MENU
+  =============================== */
+      .offcanvas {
+        background: linear-gradient(180deg, #008080, #00b3a3);
+        color: #ffffff;
+      }
+
+      .offcanvas .offcanvas-title {
+        color: #006f6f;
+        font-weight: 700;
+      }
+
+      .offcanvas .btn-close {
+        filter: invert(1);
+      }
+
+      .offcanvas .nav-link {
+        color: rgba(255, 255, 255, 0.95);
+        font-size: 1rem;
+        font-weight: 600;
+        padding: 0.65rem 0.75rem;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .offcanvas .nav-link:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      .offcanvas .nav-link.active {
+        background: #e7f3f3;
+        color: #006f6f;
+        font-weight: 700;
+      }
+
+      .offcanvas .nav-link i {
+        font-size: 1.2rem;
+      }
+
+      .topbar .sub-title {
+        display: none;
+      }
+
+      .topbar .title {
+        font-size: 1.1rem;
+      }
+
+      /* Table responsiveness */
+      .table-responsive {
+        border-radius: 8px;
+      }
+
+      .card {
+        margin-bottom: 16px;
+        border-radius: 12px;
+      }
+    }
+
+    .required-star {
+      color: #dc3545;
+      margin-left: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Senior Dashboard Mobile Topbar -->
+  <div class="mobile-topbar d-md-none">
+    <div class="brand">
+      <img src="images/logo.png" alt="logo" onerror="this.style.display='none'">
+      <div class="title">Mitrayana</div>
+    </div>
+
+    <button id="mobileToggle" class="btn btn-outline-secondary menu-btn" data-bs-toggle="offcanvas" data-bs-target="#seniorMobileSidebar">
+      <i class="bi bi-list"></i>
+    </button>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="images/whitelogo.png" alt="logo">
+      <div class="title">Mitrayana</div>
+    </div>
+
+    <a class="nav-link active" id="nav-dashboard" href="#" data-page="dashboard"><i
+        class="bi bi-house-door-fill"></i><span>Dashboard</span></a>
+    <a class="nav-link" id="nav-services" href="#" data-page="services"><i
+        class="bi bi-card-checklist"></i><span>Services</span></a>
+    <a class="nav-link" id="nav-requests" href="#" data-page="requests"><i class="bi bi-clock-history"></i><span>My
+        Requests</span></a>
+    <a class="nav-link" id="nav-profile" href="#" data-page="profile"><i
+        class="bi bi-person-circle"></i><span>Profile</span></a>
+    <a class="nav-link" id="nav-support" href="#" data-page="support"><i
+        class="bi bi-headset"></i><span>Support</span></a>
+    <a class="nav-link" id="nav-feedback" href="#" data-page="feedback">
+      <i class="bi bi-chat-dots"></i>
+      <span>Feedback</span>
+    </a>
+
+
+    <div class="sp"></div>
+
+    <div
+      style="font-size:0.9rem; color:rgba(255,255,255,0.9); padding:10px 12px; border-radius:8px; background:rgba(255,255,255,0.02)">
+      <div style="font-weight:700">Welcome</div>
+      <div style="font-size:0.85rem; opacity:0.95">Senior Citizen Portal</div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h4 style="margin:0" class="title">Senior Dashboard</h4>
+        <div style="font-size:0.9rem; color:gray" class="sub-title">Manage services, see status & request help</div>
+      </div>
+
+      <div class="user-chip">
+        <div class="me-2 text-end" style="font-size:0.9rem">
+          <div style="font-weight:700" id="topName">Senior Citizen</div>
+          <div style="font-size:0.8rem;color:gray" id="topEmail">user@example.com</div>
+        </div>
+        <div class="profile-menu">
+          <img id="topAvatar" src="https://ui-avatars.com/api/?name=Prerna&background=008080&color=fff" alt="avatar">
+          <div class="dropdown-menu dropdown-menu-end" id="profileDropdown"
+            style="display:none; position:absolute; right:0; margin-top:10px">
+            <a class="dropdown-item" href="#" id="goProfile">View Profile</a>
+            <a class="dropdown-item" href="#" id="doLogout">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE: Dashboard -->
+    <section id="page-dashboard" class="page active">
+      <div class="row g-3">
+        <div class="col-md-8">
+          <div class="card p-3">
+            <div class="d-flex align-items-center gap-3">
+
+              <div>
+                <h5 style="margin:0">Hello, <span id="greetName">User</span> 👋</h5>
+                <p style="margin:0.25rem 0 0; color:gray">Welcome back — here's a quick summary of your service
+                  activity.</p>
+              </div>
+            </div>
+
+            <div class="row mt-3 g-3">
+              <div class="col-md-4">
+                <div class="service-card p-3">
+                  <small class="text-muted">Active requests</small>
+                  <div style="font-size:1.45rem; font-weight:700" id="statActive">0</div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="service-card p-3">
+                  <small class="text-muted">Completed</small>
+                  <div style="font-size:1.45rem; font-weight:700" id="statCompleted">0</div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="service-card p-3">
+                  <small class="text-muted">Pending</small>
+                  <div style="font-size:1.45rem; font-weight:700" id="statPending">0</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="service-card p-3">
+            <h6 style="margin-top:0">Quick Actions</h6>
+            <div class="d-grid gap-2">
+              <button class="btn btn-outline-teal btn-teal" onclick="navigateTo('services')"><i
+                  class="bi bi-card-checklist me-2"></i> Request Service</button>
+              <button class="btn btn-outline-secondary" onclick="navigateTo('requests')"><i
+                  class="bi bi-clock-history me-2"></i> View Requests</button>
+              <button class="btn btn-outline-secondary" onclick="navigateTo('profile')"><i
+                  class="bi bi-person-circle me-2"></i> Edit Profile</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- services preview (small) -->
+      <div class="mt-4">
+        <h5>Recommended services</h5>
+        <div class="row g-3">
+
+          <!-- Health Assistance -->
+          <div class="col-md-4">
+            <div class="service-card p-3 d-flex gap-3 align-items-start">
+              <div class="service-icon bg-soft-teal">
+                <i class="bi bi-heart-pulse"></i>
+              </div>
+              <div>
+                <h6>Health Assistance</h6>
+                <div class="service-text">
+                  Doctor visit, medicine delivery, vitals check
+                </div>
+                <div class="mt-2">
+                  <button class="btn btn-sm btn-teal"
+                    onclick="navigateTo('services'); openServiceFromDashboard('health')">
+                    View
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wellness -->
+          <div class="col-md-4">
+            <div class="service-card p-3 d-flex gap-3 align-items-start">
+              <div class="service-icon bg-soft-green">
+                <i class="bi bi-person-hearts"></i>
+              </div>
+              <div>
+                <h6>Wellness</h6>
+                <div class="service-text">
+                  Counseling, yoga, companionship
+                </div>
+                <div class="mt-2">
+                  <button class="btn btn-sm btn-teal"
+                    onclick="navigateTo('services'); openServiceFromDashboard('wellness')">
+                    View
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Household Support -->
+          <div class="col-md-4">
+            <div class="service-card p-3 d-flex gap-3 align-items-start">
+              <div class="service-icon bg-soft-orange">
+                <i class="bi bi-house-heart"></i>
+              </div>
+              <div>
+                <h6>Household Support</h6>
+                <div class="service-text">
+                  Grocery, cleaning, maintenance
+                </div>
+                <div class="mt-2">
+                  <button class="btn btn-sm btn-teal"
+                    onclick="navigateTo('services'); openServiceFromDashboard('household')">
+                    View
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- PAGE: Services -->
+    <section id="page-services" class="page">
+      <div class="services-header-banner mb-4">
+        <div class="d-flex align-items-center gap-3">
+          <div class="services-banner-icon">
+            <i class="bi bi-grid-1x2-fill"></i>
+          </div>
+
+          <div>
+            <h4 class="services-title">Services</h4>
+            <div class="services-subtitle">
+              Choose a service, select a sub-category, then click
+              <strong>Apply Now</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row g-3" id="servicesGrid">
+        <!-- Service cards injected by JS -->
+      </div>
+
+
+      <!-- Request panel -->
+      <div id="requestPanel" class="request-panel" style="display:none; margin-top:18px">
+        <h5 style="margin-top:0">Request Help — <span id="reqServiceTitle"></span></h5>
+        <form id="helpForm">
+          <div class="mb-3">
+            <label for="selectedService" class="form-label">Selected Service</label>
+            <input id="selectedService" name="selectedService" class="form-control" readonly>
+          </div>
+          <div class="mb-3">
+            <label for="selectedSub" class="form-label">Selected Sub-Service</label>
+            <input id="selectedSub" name="selectedSub" class="form-control" readonly>
+          </div>
+          <div class="mb-3">
+            <label for="requestDetails" class="form-label">Details of help needed <span class="required-star">*</span></label>
+            <textarea id="requestDetails" name="requestDetails" class="form-control" rows="3" required></textarea>
+          </div>
+          <div class="mb-3 row g-2">
+            <div class="col-md-6">
+              <label for="preferredAt" class="form-label">Preferred date & time <span class="required-star">*</span></label>
+              <input id="preferredAt" name="preferredAt" type="datetime-local" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label for="contactNum" class="form-label">Contact number <span class="required-star">*</span></label>
+              <input id="contactNum" name="contactNum" class="form-control" type="tel" autocomplete="tel"
+                placeholder="10-digit number" pattern="[0-9]{10}" required>
+            </div>
+          </div>
+
+          <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-teal">Submit Request</button>
+            <button type="button" class="btn btn-outline-secondary" onclick="closeRequestPanel()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- PAGE: My Requests -->
+    <section id="page-requests" class="page">
+      <div class="requests-header mb-4">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center gap-3">
+            <div class="requests-icon">
+              <i class="bi bi-journal-check"></i>
+            </div>
+
+            <div>
+              <h4 class="requests-title mb-0">My Requests</h4>
+              <div class="requests-subtitle">
+                Track your service requests here. Service providers will update status.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="card p-4 shadow-sm" style="border: none; border-radius: 16px;">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover requests-table mb-0 shadow-sm">
+            <thead class="table-dark">
+              <tr>
+                <th><i class="bi bi-hash"></i> Id</th>
+                <th><i class="bi bi-tools"></i> Service</th>
+                <th><i class="bi bi-gear"></i> Subservice</th>
+                <th><i class="bi bi-info-circle"></i> Details</th>
+                <th><i class="bi bi-calendar"></i> Preferred</th>
+                <th><i class="bi bi-telephone"></i> Contact</th>
+                <th><i class="bi bi-person"></i> Assigned Name</th>
+                <th><i class="bi bi-telephone"></i> Assigned Contact</th>
+                <th><i class="bi bi-flag"></i> Status</th>
+                <th><i class="bi bi-eye"></i> Tracking</th>
+                <th><i class="bi bi-gear"></i> Actions</th>
+              </tr>
+            </thead>
+            <tbody id="requestsBody">
+              <!-- filled by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE: Profile -->
+    <section id="page-profile" class="page">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <div class="card p-3">
+            <div class="text-center">
+              <img id="profileAvatar" src="https://ui-avatars.com/api/?name=Prerna&background=008080&color=fff"
+                width="120" style="border-radius:12px">
+              <h5 id="profileName" class="mt-2">Senior Citizen</h5>
+              <div id="profileRole" style="color:gray">Senior Citizen</div>
+            </div>
+            <hr>
+            <div class="profile-details">
+              <div class="mb-2"><strong>Email:</strong> <span id="profileEmail">user@example.com</span></div>
+              <div class="mb-2"><strong>Date of Birth:</strong> <span id="profileDob">-</span></div>
+              <div class="mb-2"><strong>Age:</strong> <span id="profileAge">-</span></div>
+              <div class="mb-2"><strong>Gender:</strong> <span id="profileGender">-</span></div>
+              <div class="mb-2"><strong>Contact:</strong> <span id="profileContact">-</span></div>
+              <div class="mb-2"><strong>Emergency Contact:</strong> <span id="profileEmergency">-</span></div>
+              <div class="mb-2"><strong>Address:</strong> <span id="profileAddress">-</span></div>
+              <div class="mb-2">
+                <strong>Health Condition:</strong>
+                <div id="profileHealth" class="text-muted mt-1" style="font-size: 0.9rem">-</div>
+              </div>
+            </div>
+            <div class="mt-3 d-grid">
+              <button class="btn btn-teal" onclick="editProfile()">Edit Profile</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-8">
+          <div class="card p-3">
+            <h5>Profile Settings</h5>
+            <form id="profileForm">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="pfName" class="form-label">Full Name</label>
+                  <input id="pfName" name="name" autocomplete="name" class="form-control" required maxlength="100">
+                </div>
+                <div class="col-md-6">
+                  <label for="pfEmail" class="form-label">Email</label>
+                  <input id="pfEmail" name="email" type="email" autocomplete="email" class="form-control" required
+                    readonly>
+                </div>
+                <div class="col-md-6">
+                  <label for="pfDateOfBirth" class="form-label">Date of Birth</label>
+                  <input id="pfDateOfBirth" name="dateOfBirth" type="date" autocomplete="bday" class="form-control"
+                    required>
+                </div>
+                <div class="col-md-6">
+                  <label for="pfContact" class="form-label">Contact Number</label>
+                  <input id="pfContact" name="contactNumber" autocomplete="tel" class="form-control" pattern="[0-9]{10}"
+                    required maxlength="15">
+                </div>
+                <div class="col-md-6">
+                  <label for="pfGender" class="form-label">Gender</label>
+                  <select id="pfGender" name="gender" class="form-select" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="pfAge" class="form-label">Age</label>
+                  <input id="pfAge" name="age" type="number" class="form-control" min="60" required>
+                </div>
+                <div class="col-md-12">
+                  <label for="pfAddress" class="form-label">Address</label>
+                  <input id="pfAddress" name="address" autocomplete="street-address" class="form-control" required
+                    maxlength="200">
+                </div>
+                <div class="col-md-12">
+                  <label for="pfHealth" class="form-label">Health Condition</label>
+                  <textarea id="pfHealth" name="healthCondition" class="form-control" rows="3"
+                    maxlength="500"></textarea>
+                </div>
+                <div class="col-md-6">
+                  <label for="pfEmergency" class="form-label">Emergency Contact</label>
+                  <input id="pfEmergency" name="emergencyContact" autocomplete="tel" class="form-control"
+                    pattern="[0-9]{10}" maxlength="15">
+                </div>
+              </div>
+
+              <div class="mt-4 d-flex gap-2">
+                <button class="btn btn-teal" type="submit">Save Changes</button>
+                <button type="button" class="btn btn-outline-secondary" onclick="resetProfile()">Reset</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="page-feedback" class="page">
+
+      <!-- Header -->
+      <div class="feedback-header mb-4">
+        <div class="d-flex align-items-center gap-3">
+          <div class="feedback-icon">
+            <i class="bi bi-chat-dots"></i>
+          </div>
+          <div>
+            <h4 class="feedback-title mb-0">Feedback</h4>
+            <div class="feedback-subtitle">
+              Help us improve by sharing your experience
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page: Feedback Form -->
+      <div class="feedback-panel">
+        <form id="feedbackForm">
+
+          <!-- Rating -->
+          <div class="mb-3">
+            <label class="form-label">Overall experience</label>
+            <div class="rating-stars">
+              <i class="bi bi-star" data-value="1"></i>
+              <i class="bi bi-star" data-value="2"></i>
+              <i class="bi bi-star" data-value="3"></i>
+              <i class="bi bi-star" data-value="4"></i>
+              <i class="bi bi-star" data-value="5"></i>
+            </div>
+            <input type="hidden" id="feedbackRating" required>
+          </div>
+
+          <!-- Category -->
+          <div class="mb-3">
+            <label class="form-label">Feedback category</label>
+            <select class="form-select" id="feedbackCategory" required>
+              <option value="">Select category</option>
+              <option>Service quality</option>
+              <option>Staff behaviour</option>
+              <option>App / Website</option>
+              <option>Payment</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <!-- Message -->
+          <div class="mb-3">
+            <label class="form-label">Your feedback</label>
+            <textarea class="form-control" id="feedbackMessage" rows="4" placeholder="Please share your thoughts..."
+              required></textarea>
+          </div>
+
+          <!-- Submit -->
+          <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-teal">
+              Submit Feedback
+            </button>
+            <button type="reset" class="btn btn-outline-secondary">
+              Clear
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </section>
+
+
+    <!-- PAGE: Support -->
+    <section id="page-support" class="page">
+      <div class="support-header mb-4">
+        <div class="d-flex align-items-center gap-3">
+          <div class="support-icon">
+            <i class="bi bi-headset"></i>
+          </div>
+
+          <div>
+            <h4 class="support-title mb-0">Support</h4>
+            <div class="support-subtitle">
+              Get help with your services, account, or technical issues.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card p-3">
+        <h5>Contact Support</h5>
+        <p style="color:gray">Use this form to ask for help or report an issue. We'll respond via the contact email.</p>
+        <form id="supportForm">
+          <div class="row g-2">
+            <div class="col-md-6">
+              <label for="supName" class="visually-hidden">Your name</label>
+              <input id="supName" name="supName" class="form-control" placeholder="Your name" required>
+            </div>
+            <div class="col-md-6">
+              <label for="supEmail" class="visually-hidden">Your email</label>
+              <input id="supEmail" name="supEmail" type="email" class="form-control" placeholder="Your email" required>
+            </div>
+          </div>
+          <div class="mt-2">
+            <label for="supMsg" class="visually-hidden">Describe your issue</label>
+            <textarea id="supMsg" name="supMsg" rows="4" class="form-control" placeholder="Describe your issue"
+              required></textarea>
+          </div>
+          <div class="mt-2 d-flex gap-2">
+            <button class="btn btn-teal" type="submit">Send</button>
+            <button class="btn btn-outline-secondary" type="button"
+              onclick="document.getElementById('supportForm').reset()">Clear</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+
+    <!-- Senior Mobile Sidebar -->
+    <div class="offcanvas offcanvas-start d-md-none" tabindex="-1" id="seniorMobileSidebar">
+
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Mitrayana</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+      </div>
+
+      <div class="offcanvas-body p-2">
+        <div class="nav flex-column gap-1">
+
+          <a class="nav-link active" data-page="dashboard" onclick="navigateTo('dashboard')"
+            data-bs-dismiss="offcanvas">
+            <i class="bi bi-house-door-fill me-2"></i>
+            Dashboard
+          </a>
+
+          <a class="nav-link" data-page="services" onclick="navigateTo('services')" data-bs-dismiss="offcanvas">
+            <i class="bi bi-card-checklist me-2"></i>
+            Services
+          </a>
+
+          <a class="nav-link" data-page="requests" onclick="navigateTo('requests')" data-bs-dismiss="offcanvas">
+            <i class="bi bi-clock-history me-2"></i>
+            My Requests
+          </a>
+
+          <a class="nav-link" data-page="profile" onclick="navigateTo('profile')" data-bs-dismiss="offcanvas">
+            <i class="bi bi-person-circle me-2"></i>
+            Profile
+          </a>
+
+          <a class="nav-link" data-page="support" onclick="navigateTo('support')" data-bs-dismiss="offcanvas">
+            <i class="bi bi-headset me-2"></i>
+            Support
+          </a>
+
+          <a class="nav-link" data-page="feedback" onclick="navigateTo('feedback')" data-bs-dismiss="offcanvas">
+            <i class="bi bi-chat-dots me-2"></i>
+            Feedback
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+
+  </main>
+  <!-- Success Toast (GLOBAL) -->
+  <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 2000;">
+    <div id="feedbackToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive"
+      aria-atomic="true">
+
+      <div class="d-flex">
+        <div class="toast-body">
+          ✅ Thank you! Your feedback has been submitted successfully.
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('submit', function (e) {
+      if (e.target && e.target.id === 'feedbackForm') {
+        e.preventDefault();
+
+        const rating = document.getElementById('feedbackRating').value;
+        const category = document.getElementById('feedbackCategory').value;
+        const message = document.getElementById('feedbackMessage').value;
+
+        if (!rating || !message) {
+          alert('Please provide a rating and message.');
+          return;
+        }
+
+        // Send to API
+        const token = getAuthToken();
+        fetch(`${API_URL}/api/feedback`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            message: message,
+            category: category,
+            rating: parseInt(rating)
+          })
+        })
+        .then(response => {
+          if (response.ok) {
+            showToast('Thank you for your feedback!', 'success');
+          } else {
+            throw new Error('Failed to submit feedback');
+          }
+        })
+        .catch(error => {
+          console.error('Error submitting feedback:', error);
+          showToast('Failed to submit feedback. Please try again.', 'danger');
+        })
+        .finally(() => {
+          // Reset form
+          e.target.reset();
+          document.getElementById('feedbackRating').value = '';
+
+          document.querySelectorAll('.rating-stars i').forEach(star => {
+            star.classList.remove('bi-star-fill');
+            star.classList.add('bi-star');
+          });
+        });
+      }
+    });
+  </script>
+
+  <script>
+    let requestsRefreshInterval = null;
+    let dashboardRefreshInterval = null;
+
+    document.getElementById('mobileToggle')?.addEventListener('click', () => {
+      document.querySelector('.sidebar')?.classList.toggle('show');
+    });
+    /******************************
+     * Page Navigation Function
+     ******************************/
+    function navigateTo(page) {
+      // 1️⃣ Hide all pages/sections
+      document.querySelectorAll('[data-section]').forEach(section => {
+        section.style.display = 'none';
+      });
+
+      // 2️⃣ Show selected page
+      const target = document.querySelector(`[data-section="${page}"]`);
+      if (target) {
+        target.style.display = 'block';
+      }
+
+      // 3️⃣ Update active state (desktop + mobile)
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+
+        if (link.dataset.page === page) {
+          link.classList.add('active');
+        }
+      });
+
+      // 4️⃣ Scroll to top (important for mobile)
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // 5️⃣ Optional: save last page
+      localStorage.setItem('activePage', page);
+    }
+
+    // 🔁 Restore last active page on reload
+    document.addEventListener('DOMContentLoaded', () => {
+      const lastPage = localStorage.getItem('activePage') || 'dashboard';
+      navigateTo(lastPage);
+    });
+
+
+
+    /******************************
+     * In-memory services list
+     ******************************/
+    const SERVICES = [
+      {
+        id: 'health',
+        title: 'Health Assistance',
+        description: 'Doctor visits, medicine delivery, vitals check and medicine reminders.',
+        price: '₹500 - ₹1200',
+        duration: '1-3 hours',
+        subs: [
+          { id: 'doc_visit', title: 'Doctor Visit', price: '700', duration: '1 hour', desc: 'Doctor home visit and basic checkup.' },
+          { id: 'medicine_delivery', title: 'Medicine Delivery', price: '150', duration: 'Same day', desc: 'We pick & deliver medicines.' },
+          { id: 'vitals_check', title: 'Vitals Check', price: '300', duration: '30 mins', desc: 'BP, sugar, temperature monitoring.' }
+        ]
+      },
+      {
+        id: 'wellness',
+        title: 'Wellness',
+        description: 'Counseling, yoga, social companionship and gentle exercises.',
+        price: '₹300 - ₹900',
+        duration: '1 hour/session',
+        subs: [
+          { id: 'counseling', title: 'Counseling', price: '600', duration: '45 mins', desc: 'Emotional support & counseling.' },
+          { id: 'yoga', title: 'Home Yoga', price: '350', duration: '45 mins', desc: 'Gentle seniors-friendly yoga session.' },
+          { id: 'companionship', title: 'Companionship', price: '300', duration: '2 hours', desc: 'Friendly visits & conversation.' }
+        ]
+      },
+      {
+        id: 'household',
+        title: 'Household Support',
+        description: 'Cleaning, grocery, laundry and small home repairs.',
+        price: '₹200 - ₹700',
+        duration: '1-3 hours',
+        subs: [
+          { id: 'grocery', title: 'Grocery Shopping', price: '250', duration: '2-3 hours', desc: 'Grocery purchase & drop-off.' },
+          { id: 'cleaning', title: 'Home Cleaning', price: '400', duration: '2 hours', desc: 'Light housekeeping & cleaning.' },
+          { id: 'laundry', title: 'Laundry Help', price: '300', duration: '2 hours', desc: 'Laundry and folding support.' }
+        ]
+      }
+    ];
+
+    /******************************
+     * Utilities: storage for demo
+     ******************************/
+    const LS_REQ_KEY = 'mitrayana_requests_v1';
+    function loadRequests() {
+      try {
+        return JSON.parse(localStorage.getItem(LS_REQ_KEY) || '[]');
+      } catch (e) { return []; }
+    }
+    function saveRequests(arr) { localStorage.setItem(LS_REQ_KEY, JSON.stringify(arr)); }
+
+    /******************************
+     * Page navigation
+     ******************************/
+    document.querySelectorAll('.nav-link').forEach(a => {
+      a.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        const page = a.getAttribute('data-page');
+        if (page) navigateTo(page);
+      });
+    });
+
+    // profile avatar dropdown
+    document.getElementById('topAvatar').addEventListener('click', () => {
+      const dd = document.getElementById('profileDropdown');
+      dd.style.display = dd.style.display === 'block' ? 'none' : 'block';
+    });
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.profile-menu')) document.getElementById('profileDropdown').style.display = 'none';
+    });
+    document.getElementById('goProfile').addEventListener('click', (e) => { e.preventDefault(); navigateTo('profile') });
+    document.getElementById('doLogout').addEventListener('click', (e) => { e.preventDefault(); doLogout() });
+
+    function navigateTo(page) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+      document.getElementById('page-' + page).classList.add('active');
+      const nav = document.querySelector(`[data-page="${page}"]`);
+      if (nav) nav.classList.add('active');
+
+      // hide request panel when leaving
+      closeRequestPanel();
+
+      // Clear existing refresh intervals
+      if (requestsRefreshInterval) {
+        clearInterval(requestsRefreshInterval);
+        requestsRefreshInterval = null;
+      }
+      if (dashboardRefreshInterval) {
+        clearInterval(dashboardRefreshInterval);
+        dashboardRefreshInterval = null;
+      }
+
+      if (page === 'requests') {
+        renderRequestsTable();
+      }
+      if (page === 'dashboard') {
+        updateStats();
+        // Auto-refresh stats every 15 seconds
+        dashboardRefreshInterval = setInterval(updateStats, 15000);
+      }
+
+      // Always auto-refresh requests every 15 seconds regardless of current page
+      requestsRefreshInterval = setInterval(() => {
+        fetchAndRenderRequests();
+        // Also update stats in case request status changed
+        updateStats();
+      }, 15000);
+    }
+    /******************************
+     * Render services & sub-services
+     ******************************/
+    const SUB_ICON_MAP = {
+      // Health
+      doc_visit: 'bi-hospital',
+      medicine_delivery: 'bi-capsule-pill',
+      vitals_check: 'bi-activity',
+
+      // Wellness
+      counseling: 'bi-chat-heart',
+      yoga: 'bi-universal-access',
+      companionship: 'bi-people',
+
+      // Household
+      grocery: 'bi-cart-check',
+      cleaning: 'bi-bucket',
+      laundry: 'bi-basket3',
+    };
+    function openServiceFromDashboard(serviceId) {
+      // 1. Navigate to Services page
+      navigateTo('services');
+
+      // 2. After page switch, render only selected service
+      setTimeout(() => {
+        renderServices(serviceId);
+      }, 50);
+    }
+
+
+    const servicesGrid = document.getElementById('servicesGrid');
+
+    function renderServices(filterServiceId = null) {
+      servicesGrid.innerHTML = '';
+      document.getElementById('requestPanel').style.display = 'none';
+
+      const servicesToRender = filterServiceId
+        ? SERVICES.filter(s => s.id === filterServiceId)
+        : SERVICES;
+
+      servicesToRender.forEach(service => {
+
+        // ===== Service Header =====
+        const serviceSection = document.createElement('div');
+        serviceSection.className = 'service-section';
+
+        serviceSection.innerHTML = `
+  <div class="service-section-header">
+    <div class="d-flex align-items-center gap-2">
+      <span class="service-accent"></span>
+      <h5 class="service-title">${service.title}</h5>
+    </div>
+    <p class="service-desc">${service.description}</p>
+  </div>
+
+  <div class="row g-3" id="subs-${service.id}"></div>
+`;
+
+
+        servicesGrid.appendChild(serviceSection);
+
+        const subsRow = serviceSection.querySelector(`#subs-${service.id}`);
+
+        // ===== Sub-service Cards =====
+        service.subs.forEach(sub => {
+
+          const col = document.createElement('div');
+          col.className = 'col-md-4';
+
+          col.innerHTML = `
+        <div class="sub-service-card">
+
+          <div>
+            <div class="sub-card-header">
+              <div class="sub-icon ${service.id}">
+                <i class="bi ${SUB_ICON_MAP[sub.id] || 'bi-star'}"></i>
+              </div>
+              <div class="sub-title">${sub.title}</div>
+            </div>
+
+            <div class="sub-desc">${sub.desc}</div>
+
+            <div class="sub-tags">
+              <span class="sub-tag price-tag">
+                <i class="bi bi-currency-rupee me-1"></i> ${sub.price}
+              </span>
+              <span class="sub-tag time-tag">
+                <i class="bi bi-clock me-1"></i> ${sub.duration}
+              </span>
+            </div>
+          </div>
+
+          <div class="sub-apply">
+            <button class="btn btn-teal"
+              data-svc="${service.id}"
+              data-sub="${sub.id}">
+              Apply Now
+            </button>
+          </div>
+
+        </div>
+      `;
+
+          subsRow.appendChild(col);
+        });
+      });
+
+      // ===== APPLY BUTTON LOGIC =====
+      document.querySelectorAll('.sub-service-card button').forEach(btn => {
+        btn.addEventListener('click', () => {
+
+          const svcId = btn.getAttribute('data-svc');
+          const subId = btn.getAttribute('data-sub');
+
+          const svc = SERVICES.find(s => s.id === svcId);
+          const sub = svc.subs.find(s => s.id === subId);
+
+          document.getElementById('selectedService').value = svc.title;
+          document.getElementById('selectedSub').value = sub.title;
+          document.getElementById('reqServiceTitle').textContent =
+            `${svc.title} → ${sub.title}`;
+
+          openRequestForService(svcId, subId);
+        });
+      });
+    }
+
+
+    /******************************
+     * Open request panel logic
+     ******************************/
+    /******************************
+ * Open request panel logic
+ ******************************/
+    function openRequestForService(svcId, subId = null) {
+      const svc = SERVICES.find(s => s.id === svcId);
+
+      document.getElementById('reqServiceTitle').textContent = svc.title;
+      document.getElementById('selectedService').value = svc.title;
+
+      // ✅ choose correct sub
+      let selectedSubObj;
+      if (subId) {
+        selectedSubObj = svc.subs.find(s => s.id === subId);
+      } else {
+        selectedSubObj = svc.subs[0]; // fallback only
+      }
+
+      document.getElementById('selectedSub').value = selectedSubObj.title;
+
+      // active UI state (safe even if sub-list doesn't exist)
+      document
+        .querySelectorAll(`.sub-list[data-service="${svcId}"] .sub-btn`)
+        .forEach(b => b.classList.remove('active'));
+
+      const activeBtn = document.querySelector(
+        `.sub-list[data-service="${svcId}"] .sub-btn[data-sub="${selectedSubObj.id}"]`
+      );
+      if (activeBtn) activeBtn.classList.add('active');
+
+      // open panel
+      document.getElementById('requestPanel').style.display = 'block';
+      // Set min date to now for preferredAt
+      document.getElementById('preferredAt').min = new Date().toISOString().slice(0,16);
+      window.scrollTo({
+        top: document.getElementById('requestPanel').offsetTop - 20,
+        behavior: 'smooth'
+      });
+    }
+
+    function closeRequestPanel() {
+      document.getElementById('requestPanel').style.display = 'none';
+      document.getElementById('helpForm').reset();
+    }
+
+    /******************************
+     * Submit request -> save to localStorage (demo)
+     ******************************/
+    document.getElementById('helpForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const svc = document.getElementById('selectedService').value;
+      const sub = document.getElementById('selectedSub').value;
+      const details = document.getElementById('requestDetails').value.trim();
+      const when = document.getElementById('preferredAt').value;
+      const contact = document.getElementById('contactNum').value.trim();
+      if (!svc || !sub || !details || !when || !contact) { alert('Please fill all fields'); return; }
+
+      // Validate that preferred date is in the future
+      const preferredDate = new Date(when);
+      const now = new Date();
+      if (preferredDate <= now) {
+        alert('Please select a future date and time.');
+        return;
+      }
+
+      const token = getAuthToken();
+      if (!token) {
+        if (confirm('Please login to apply for services. Go to login page now?')) window.location.href = 'login.html';
+        return;
+      }
+
+      // find price & duration for selected sub
+      const svcObj = SERVICES.find(s => s.title === svc) || SERVICES.find(s => s.id === document.querySelector(`.sub-list[data-service]`)?.getAttribute('data-service'));
+      const subObj = svcObj ? svcObj.subs.find(x => x.title === sub || x.title === document.querySelector(`.sub-btn.active`)?.textContent) : null;
+      const price = subObj ? subObj.price : '';
+      const duration = subObj ? subObj.duration : '';
+
+      const payload = {
+        Title: svc,
+        SubService: sub,
+        Description: details,
+        PreferredAt: when,
+        Contact: contact,
+        Price: price,
+        Duration: duration
+      };
+
+      try {
+        const resp = await fetch(`${API_URL}/api/ServiceRequests`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+          body: JSON.stringify(payload)
+        });
+
+        if (!resp.ok) {
+          const txt = await resp.text();
+          let msg = txt;
+          try { msg = JSON.parse(txt).message || txt; } catch (e) { }
+          throw new Error(msg || 'Failed to submit request');
+        }
+
+        const created = await resp.json();
+        // UI updates
+        closeRequestPanel();
+        navigateTo('requests');
+        await fetchAndRenderRequests();
+        updateStats();
+        alert('✅ Request submitted. Service providers will update status in their dashboard.');
+      } catch (err) {
+        console.error('Request submit failed', err);
+        alert('Failed to submit request: ' + (err.message || err));
+      }
+    });
+
+    // Restrict contact number to digits only
+    document.getElementById('contactNum').addEventListener('input', function() {
+      this.value = this.value.replace(/[^0-9]/g, '');
+    });
+
+    /******************************
+     * Render requests table
+     ******************************/
+    async function fetchAndRenderRequests() {
+      const body = document.getElementById('requestsBody');
+      const token = getAuthToken();
+      if (!token) {
+        // fallback to localStorage demo
+        const arr = loadRequests();
+        if (arr.length === 0) { body.innerHTML = '<tr><td colspan="10" class="text-center text-muted py-4">No requests yet — please apply for a service.</td></tr>'; return; }
+        body.innerHTML = arr.map(r => {
+          return `<tr>
+            <td>${r.id}</td>
+            <td>${r.service}</td>
+            <td>${r.subservice}</td>
+            <td style="max-width:200px"><small class="text-muted" style="font-size: 0.8rem; line-height: 1.3;">${r.details}</small></td>
+            <td>${new Date(r.preferredAt).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</td>
+            <td>${r.contact}</td>
+            <td>${r.assignedName ? r.assignedName : '-'}</td>
+            <td>${r.assignedVolunteerContact || r.assignedContact || '-'}</td>
+            <td><span class="badge bg-${r.status === 'Completed' ? 'success' : r.status === 'In Progress' ? 'warning' : r.status === 'Cancelled' ? 'danger' : 'secondary'}">${r.status}</span></td>
+            <td><button class="btn btn-sm btn-outline-secondary" onclick="viewTracking('${r.id}')">View</button></td>
+            <td>${r.status === 'Open' ? `<button class="btn btn-sm btn-outline-danger" onclick="cancelRequest('${r.id}')"><i class="bi bi-x-circle"></i> Cancel</button>` : '-'}</td>
+          </tr>`;
+        }).join('');
+        return;
+      }
+
+      try {
+        const resp = await fetch(`${API_URL}/api/ServiceRequests/mine`, { headers: { 'Authorization': `Bearer ${token}` } });
+        if (!resp.ok) throw new Error('Failed to load requests');
+        const list = await resp.json();
+        if (!list.length) { body.innerHTML = '<tr><td colspan="10" class="text-center text-muted py-4">No requests yet — please apply for a service.</td></tr>'; return; }
+        body.innerHTML = list.map(r => {
+          return `<tr>
+            <td>${r.requestId}</td>
+            <td>${r.title}${r.subService ? ' → ' + r.subService : ''}</td>
+            <td>${r.subService || '-'}</td>
+            <td style="max-width:200px"><small class="text-muted" style="font-size: 0.8rem; line-height: 1.3;">${r.description || '-'}</small></td>
+            <td>${r.preferredAt ? new Date(r.preferredAt).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) : '-'}</td>
+            <td>${r.contact || '-'}</td>
+            <td>${r.assignedVolunteerName || '-'}</td>
+            <td>${r.assignedVolunteerContact || '-'}</td>
+            <td><span class="badge bg-${r.status === 'Completed' ? 'success' : r.status === 'In Progress' ? 'warning' : r.status === 'Cancelled' ? 'danger' : 'secondary'}">${r.status}</span></td>
+            <td><button class="btn btn-sm btn-outline-secondary" onclick="viewTracking('${r.requestId}')">View</button></td>
+            <td>${r.status === 'Open' ? `<button class="btn btn-sm btn-outline-danger" onclick="cancelRequest('${r.requestId}')"><i class="bi bi-x-circle"></i> Cancel</button>` : '-'}</td>
+          </tr>`;
+        }).join('');
+      } catch (err) {
+        console.error('Failed to load requests from API', err);
+        body.innerHTML = '<tr><td colspan="10" class="text-center text-muted py-4">Failed to load requests</td></tr>';
+      }
+    }
+
+    function renderRequestsTable() {
+      fetchAndRenderRequests();
+    }
+
+    async function viewTracking(id) {
+      const token = getAuthToken();
+      if (!token) {
+        const arr = loadRequests();
+        const r = arr.find(x => x.id === id);
+        if (!r) return alert('Request not found');
+        const txt = (r.history || []).map(h => `${new Date(h.ts).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} — ${h.note}`).join('\n\n');
+        alert(`Tracking for ${r.id}\n\nStatus: ${r.status}\n\nHistory:\n${txt || '(no updates yet)'}`);
+        return;
+      }
+
+      try {
+        const resp = await fetch(`${API_URL}/api/ServiceRequests/${id}`, { headers: { 'Authorization': `Bearer ${token}` } });
+        if (!resp.ok) throw new Error('Request not found');
+        const r = await resp.json();
+        alert(`Request #${r.requestId}\n\nService: ${r.title} → ${r.subService || '-'}\nStatus: ${r.status}\nPreferred: ${r.preferredAt || '-'}\nAssigned: ${r.assignedVolunteerName || '-'}\n\nDetails:\n${r.description || '(no details)'}\n`);
+      } catch (err) {
+        console.error('Failed to get tracking', err);
+        alert('Failed to load tracking info');
+      }
+    }
+
+    async function cancelRequest(id) {
+      if (!confirm('Are you sure you want to cancel this request? This action cannot be undone.')) {
+        return;
+      }
+
+      const token = getAuthToken();
+      if (!token) {
+        // Handle localStorage demo
+        const arr = loadRequests();
+        const index = arr.findIndex(x => x.id === id);
+        if (index === -1) return alert('Request not found');
+        if (arr[index].status !== 'Open') return alert('Cannot cancel request that is not open');
+        arr[index].status = 'Cancelled';
+        saveRequests(arr);
+        await fetchAndRenderRequests();
+        updateStats();
+        alert('Request cancelled successfully');
+        return;
+      }
+
+      try {
+        const resp = await fetch(`${API_URL}/api/ServiceRequests/${id}/cancel`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        if (!resp.ok) {
+          const err = await resp.json().catch(() => null);
+          throw new Error(err?.message || 'Failed to cancel request');
+        }
+
+        await fetchAndRenderRequests();
+        updateStats();
+        alert('Request cancelled successfully');
+      } catch (err) {
+        console.error('Failed to cancel request', err);
+        alert('Failed to cancel request: ' + (err.message || err));
+      }
+    }
+
+    /******************************
+     * Stats update
+     ******************************/
+    async function updateStats() {
+      const token = getAuthToken();
+      if (!token) {
+        const arr = loadRequests();
+        const active = arr.filter(x => x.status === 'Open' || x.status === 'In Progress').length;
+        const completed = arr.filter(x => x.status === 'Completed').length;
+        const pending = arr.filter(x => x.status === 'Open').length;
+        document.getElementById('statActive').textContent = active;
+        document.getElementById('statCompleted').textContent = completed;
+        document.getElementById('statPending').textContent = pending;
+        return;
+      }
+
+      try {
+        const resp = await fetch(`${API_URL}/api/ServiceRequests/mine`, { headers: { 'Authorization': `Bearer ${token}` } });
+        if (!resp.ok) throw new Error('Failed to load requests');
+        const list = await resp.json();
+        const active = list.filter(x => x.status === 'Open' || x.status === 'In Progress').length;
+        const completed = list.filter(x => x.status === 'Completed').length;
+        const pending = list.filter(x => x.status === 'Open').length;
+        document.getElementById('statActive').textContent = active;
+        document.getElementById('statCompleted').textContent = completed;
+        document.getElementById('statPending').textContent = pending;
+      } catch (err) {
+        console.error('Failed to load stats', err);
+      }
+    }
+
+    /******************************
+     * Profile management
+     ******************************/
+    const API_URL = 'http://localhost:5501';
+
+    // Get authentication token
+    function getAuthToken() {
+      return localStorage.getItem('token');
+    }
+    const token = true; // dummy token
+    // Load profile from backend
+    async function loadProfile() {
+      try {
+        const token = getAuthToken();
+        //if (!token) {
+        //window.location.href = 'login.html';
+        //return;
+        //}
+
+        const response = await fetch(`${API_URL}/api/user/me`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        // if (response.status === 401) {
+        // localStorage.removeItem('token');
+        //window.location.href = 'login.html';
+        //return;
+        //}
+
+        if (!response.ok) {
+          throw new Error('Failed to load profile');
+        }
+
+        const data = await response.json();
+        applyProfileToUI(data);
+      } catch (error) {
+        console.error('Error loading profile:', error);
+        showToast('Failed to load profile. Please refresh the page.', 'danger');
+        // Set generic fallbacks
+        applyProfileToUI({ name: 'Senior Citizen', email: '' });
+      }
+    }
+
+    // Apply profile data to UI (handles either camelCase or PascalCase fields)
+    function applyProfileToUI(data) {
+      if (!data) return;
+      const get = (k) => {
+        if (data[k] !== undefined) return data[k];
+        // try PascalCase
+        const pascal = k.charAt(0).toUpperCase() + k.slice(1);
+        return data[pascal] !== undefined ? data[pascal] : undefined;
+      };
+
+      const name = get('name') || '';
+      const email = get('email') || '';
+      const dobRaw = get('dateOfBirth');
+      const age = get('age');
+      const gender = get('gender');
+      const contact = get('contactNumber') || get('contact') || '';
+      const emergency = get('emergencyContact') || '';
+      const address = get('address') || '';
+      const health = get('healthCondition') || '';
+      const role = get('role') || 'Senior Citizen';
+
+      // Top bar
+      document.getElementById('topName').textContent = name;
+      document.getElementById('topEmail').textContent = email;
+      document.getElementById('greetName').textContent = (name.split && name.split(' ')[0]) || name;
+
+      // Profile card display
+      document.getElementById('profileName').textContent = name || '';
+      document.getElementById('profileEmail').textContent = email || '-';
+
+      // format DOB safely
+      let dobText = '-';
+      if (dobRaw) {
+        try {
+          const d = new Date(dobRaw);
+          if (!isNaN(d)) dobText = d.toLocaleDateString();
+        } catch (e) { dobText = '-'; }
+      }
+      document.getElementById('profileDob').textContent = dobText;
+
+      // age can come from API or be computed
+      let ageText = age || '-';
+      if ((!ageText || ageText === '-') && dobRaw) {
+        try {
+          const d = new Date(dobRaw);
+          if (!isNaN(d)) {
+            const diff = Date.now() - d.getTime();
+            ageText = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+          }
+        } catch (e) { }
+      }
+      document.getElementById('profileAge').textContent = ageText;
+
+      document.getElementById('profileGender').textContent = gender || '-';
+      document.getElementById('profileContact').textContent = contact || '-';
+      document.getElementById('profileEmergency').textContent = emergency || '-';
+      document.getElementById('profileAddress').textContent = address || '-';
+      document.getElementById('profileHealth').textContent = health || '-';
+      document.getElementById('profileRole').textContent = role;
+
+      // Form fields
+      document.getElementById('pfName').value = name || '';
+      document.getElementById('pfEmail').value = email || '';
+      document.getElementById('pfDateOfBirth').value = dobRaw ? new Date(dobRaw).toISOString().split('T')[0] : '';
+      document.getElementById('pfAge').value = age || '';
+      document.getElementById('pfGender').value = gender || '';
+      document.getElementById('pfContact').value = contact || '';
+      document.getElementById('pfEmergency').value = emergency || '';
+      document.getElementById('pfAddress').value = address || '';
+      document.getElementById('pfHealth').value = health || '';
+
+      // Avatar - use initials (1-2 letters) via ui-avatars for consistent initials-based avatar
+      const initials = (name || 'SC').split(' ').filter(Boolean).slice(0, 2).map(n => n[0]).join('').toUpperCase();
+      const bgColor = '008080';
+      const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(initials)}&background=${bgColor}&color=fff&rounded=true&bold=true&length=2&size=128`;
+      const smallAvatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(initials)}&background=${bgColor}&color=fff&rounded=true&bold=true&length=2&size=48`;
+      // Set avatars (fallback if elements exist)
+      const topAvatarEl = document.getElementById('topAvatar');
+      const profileAvatarEl = document.getElementById('profileAvatar');
+      const dashGreetEl = document.getElementById('dashboardGreetAvatar');
+      if (topAvatarEl) topAvatarEl.src = avatarUrl;
+      if (profileAvatarEl) profileAvatarEl.src = avatarUrl;
+      if (dashGreetEl) dashGreetEl.src = avatarUrl;
+      const greetingAvatar = document.getElementById('greetingAvatar');
+      if (greetingAvatar) greetingAvatar.src = smallAvatarUrl;
+    }
+
+    // Handle profile form submission
+    document.getElementById('profileForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const updateData = {
+        name: document.getElementById('pfName').value.trim(),
+        dateOfBirth: document.getElementById('pfDateOfBirth').value,
+        contactNumber: document.getElementById('pfContact').value.trim(),
+        gender: document.getElementById('pfGender').value,
+        address: document.getElementById('pfAddress').value.trim(),
+        age: parseInt(document.getElementById('pfAge').value) || null,
+        healthCondition: document.getElementById('pfHealth').value.trim(),
+        emergencyContact: document.getElementById('pfEmergency').value.trim()
+      };
+
+      try {
+        const token = getAuthToken();
+        if (!token) throw new Error('Not authenticated');
+
+        const response = await fetch(`${API_URL}/api/user/me`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(updateData)
+        });
+
+        if (!response.ok) {
+          // attempt to read error body for better messaging
+          let text = await response.text();
+          let msg = text;
+          try { msg = JSON.parse(text).message || text; } catch (e) { }
+          throw new Error(msg || 'Failed to update profile');
+        }
+
+        // get updated profile returned by the API and apply immediately
+        const updated = await response.json();
+        applyProfileToUI(updated);
+        showToast('✅ Profile updated successfully', 'success');
+      } catch (error) {
+        console.error('Error updating profile:', error);
+        showToast('Failed to update profile: ' + error.message, 'danger');
+      }
+    });
+
+    async function resetProfile() {
+      // Reset form to current profile data
+      document.getElementById('profileForm').reset();
+    }
+
+    function showToast(message, type = 'info') {
+      const toast = document.createElement('div');
+      toast.className = `alert alert-${type} position-fixed top-0 end-0 m-3`;
+      toast.style.zIndex = '1500';
+      toast.role = 'alert';
+      toast.textContent = message;
+
+      document.body.appendChild(toast);
+      setTimeout(() => {
+        toast.remove();
+      }, 3000);
+    }
+
+    function editProfile() {
+      navigateTo('profile');
+    }
+
+    // Initialize profile
+    loadProfile();
+
+    // Logout functionality
+    function doLogout() {
+      if (confirm('Are you sure you want to logout?')) {
+        localStorage.removeItem('token');
+        window.location.href = 'login.html';
+      }
+    }
+    /******************************
+     * Feedback form logic
+     ******************************/
+    // Star rating logic
+    const stars = document.querySelectorAll('.rating-stars i');
+    const ratingInput = document.getElementById('feedbackRating');
+
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        const value = star.getAttribute('data-value');
+        ratingInput.value = value;
+
+        stars.forEach(s => {
+          const starValue = s.getAttribute('data-value');
+
+          if (starValue <= value) {
+            s.classList.remove('bi-star');
+            s.classList.add('bi-star-fill', 'active');
+          } else {
+            s.classList.remove('bi-star-fill', 'active');
+            s.classList.add('bi-star');
+          }
+        });
+      });
+    });
+
+
+
+    /******************************
+     * Support form
+     ******************************/
+    document.getElementById('supportForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const name = document.getElementById('supName').value.trim();
+      const email = document.getElementById('supEmail').value.trim();
+      const msg = document.getElementById('supMsg').value.trim();
+      if (!name || !email || !msg) { alert('Please fill all support fields'); return; }
+
+      try {
+        const res = await fetch('/api/Contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, message: msg, role: 'Senior' })
+        });
+        if (res.ok) {
+          this.reset();
+          alert('✅ Support request sent. We will contact you at ' + email);
+        } else {
+          alert('Failed to send support request');
+        }
+      } catch (error) {
+        alert('Error sending support request');
+      }
+    });
+
+    /******************************
+     * Helpers & init
+     ******************************/
+    function openServicesScroll(kind) {
+      // show services page and scroll to service card matching id
+      navigateTo('services');
+      setTimeout(() => {
+        const el = document.querySelector(`.sub-list[data-service="${kind}"]`);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 200);
+    }
+
+    // init
+    renderServices();
+    renderRequestsTable();
+    updateStats();
+
+    // ensure active nav on load
+    document.addEventListener('DOMContentLoaded', () => document.querySelector('.nav-link.active')?.classList.add('active'));
+
+
+    const toggleBtn = document.getElementById("mobileToggle");
+    const sidebar = document.querySelector(".sidebar");
+
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+    });
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+      /* ===============================
+         STAR RATING HANDLER
+      =============================== */
+      document.addEventListener('click', function (e) {
+        if (e.target.closest('.rating-stars i')) {
+          const star = e.target;
+          const value = star.getAttribute('data-value');
+
+          // Set hidden input
+          const ratingInput = document.getElementById('feedbackRating');
+          ratingInput.value = value;
+
+          // Fill stars up to selected
+          document.querySelectorAll('.rating-stars i').forEach(s => {
+            if (s.getAttribute('data-value') <= value) {
+              s.classList.remove('bi-star');
+              s.classList.add('bi-star-fill');
+            } else {
+              s.classList.remove('bi-star-fill');
+              s.classList.add('bi-star');
+            }
+          });
+        }
+      });
+
+    });
+
+  </script>
+
+
+
+</html>
+

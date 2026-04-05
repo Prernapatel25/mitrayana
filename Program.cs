@@ -9,9 +9,20 @@ using Mitrayana.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-Console.WriteLine($"Using port: {port}");
-builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+var port = Environment.GetEnvironmentVariable("PORT");
+var urls = Environment.GetEnvironmentVariable("ASPNETCORE_URLS");
+
+if (!string.IsNullOrEmpty(port))
+{
+    urls = $"http://0.0.0.0:{port}";
+}
+else if (string.IsNullOrEmpty(urls))
+{
+    urls = "http://0.0.0.0:8080";
+}
+
+Console.WriteLine($"Binding URLs: {urls}");
+builder.WebHost.UseUrls(urls);
 
 // Load configuration
 var configuration = builder.Configuration;
@@ -165,20 +176,21 @@ app.Use(async (context, next) =>
     await next();
 });
 
-// Enable Swagger in dev
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// Enable Swagger for all environments so documentation is available in Railway deployment
+app.UseSwagger();
+app.UseSwaggerUI();
 
-// Middleware pipeline - API routes FIRST, then static files
+// Serve static files (HTML, CSS, JS) before routing so SPA assets are returned directly.
+app.UseStaticFiles();
+
+// Middleware pipeline
 app.UseRouting();
 // app.UseCors("AllowDevFrontend");
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapGet("/health", () => Results.Ok("OK"));
 
 // Log registered endpoints for debugging
 try
@@ -197,8 +209,6 @@ catch (Exception ex)
 {
     Console.WriteLine("Endpoint listing failed: " + ex.Message);
 }
-// Serve static files (HTML, CSS, JS) AFTER API routes
-app.UseStaticFiles();
 
 // Note: removed generic fallback to avoid intercepting API POST requests
 // If SPA fallback is required, implement a conditional fallback that ignores /api paths.

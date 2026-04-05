@@ -3391,11 +3391,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PRERNA\\Desktop\\Mitrayna - Copy (2)\\Mitrayana.Api.csproj",
+      "projectUniqueName": "C:\\Users\\PRERNA\\Desktop\\Mitrayna\\Mitrayana.Api.csproj",
       "projectName": "Mitrayana.Api",
-      "projectPath": "C:\\Users\\PRERNA\\Desktop\\Mitrayna - Copy (2)\\Mitrayana.Api.csproj",
+      "projectPath": "C:\\Users\\PRERNA\\Desktop\\Mitrayna\\Mitrayana.Api.csproj",
       "packagesPath": "C:\\Users\\PRERNA\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PRERNA\\Desktop\\Mitrayna - Copy (2)\\obj\\",
+      "outputPath": "C:\\Users\\PRERNA\\Desktop\\Mitrayna\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\PRERNA\\AppData\\Roaming\\NuGet\\NuGet.Config"

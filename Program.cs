@@ -8,8 +8,13 @@ using Mitrayana.Api.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+
+var port = Environment.GetEnvironmentVariable("PORT");
+
+if (!string.IsNullOrEmpty(port))
+{
+    builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+}
 
 // Load configuration
 var configuration = builder.Configuration;
@@ -34,7 +39,7 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
-});
+})
 
 // SQLite Database (fallback)
 // builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -92,7 +97,7 @@ app.UseExceptionHandler(errorApp =>
     errorApp.Run(async context =>
     {
         context.Response.StatusCode = 500;
-        context.Response.Headers["Access-Control-Allow-Origin"] = "http://127.0.0.1:8080";
+        context.Response.Headers["Access-Control-Allow-Origin"] = "*";
         context.Response.Headers["Access-Control-Allow-Methods"] = "GET,POST,PUT,DELETE,OPTIONS";
         context.Response.Headers["Access-Control-Allow-Headers"] = "Content-Type,Authorization";
         await context.Response.WriteAsync("Internal Server Error");

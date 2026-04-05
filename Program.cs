@@ -9,12 +9,9 @@ using Mitrayana.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var port = Environment.GetEnvironmentVariable("PORT");
-
-if (!string.IsNullOrEmpty(port))
-{
-    builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
-}
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+Console.WriteLine($"Using port: {port}");
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
 
 // Load configuration
 var configuration = builder.Configuration;

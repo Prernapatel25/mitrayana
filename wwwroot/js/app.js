@@ -1,4 +1,4 @@
-const apiBase = "http://localhost:5501/api";
+const apiBase = "/api";
 
 // ---------- Hide Preloader After Page Load ----------
 window.addEventListener("load", function () {
@@ -59,8 +59,8 @@ document.querySelectorAll("a").forEach((link) => {
 // Avoid running an example fetch automatically when the page is opened via file:// or when
 // the backend is not reachable. That causes noisy "TypeError: Failed to fetch" errors.
 if (window.location.protocol === 'file:') {
-  console.warn('app.js warning: frontend loaded via file:// — fetch() to localhost APIs will fail. Please access the application via http://localhost:5500/ to test API calls.');
-  alert('Warning: This page is loaded via file://. API calls will fail. Please access via http://localhost:5500/');
+  console.warn('app.js warning: frontend loaded via file:// — fetch() to APIs will fail. Please access the application via a web server URL.');
+  alert('Warning: This page is loaded via file://. API calls will fail. Please access via a web server URL.');
 } else {
   // Optional: we could run a small health check here during development, but do not run
   // automatic POSTs that create data. Keep console output light.

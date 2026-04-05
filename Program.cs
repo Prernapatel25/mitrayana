@@ -9,8 +9,23 @@ using Mitrayana.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Railway sets ASPNETCORE_URLS=http://+:8080 via Dockerfile ENV
-// No manual URL configuration needed
+var portEnv = Environment.GetEnvironmentVariable("PORT");
+if (!string.IsNullOrEmpty(portEnv) && int.TryParse(portEnv, out var port))
+{
+    Console.WriteLine($"Binding Kestrel to PORT env: {port}");
+    builder.WebHost.ConfigureKestrel(options =>
+    {
+        options.ListenAnyIP(port);
+    });
+}
+else
+{
+    Console.WriteLine("PORT env not found; binding to default 8080");
+    builder.WebHost.ConfigureKestrel(options =>
+    {
+        options.ListenAnyIP(8080);
+    });
+}
 
 // Load configuration
 var configuration = builder.Configuration;
